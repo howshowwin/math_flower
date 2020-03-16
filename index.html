@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/fabric.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-editable-select.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-editable-select.js"></script>
+    <link rel="stylesheet" href="css/money.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/button_css.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/resize.js"></script>
+    <style>
+        #background_canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #FFA69E;
+            border-radius: 30px;
+            z-index: 0;
+
+
+
+
+        }
+
+        canvas {
+            /* border: 1px solid #000; */
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+            /* background: #FFA69E; */
+        }
+
+        .change_cursor {
+            cursor: crosshair !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+
+        }
+
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .imgbox img {
+            display: inline-block;
+
+        }
+
+        [draggable] {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+            cursor: move;
+        }
+
+        .box {
+            height: 500px;
+
+            width: 200px;
+            position: absolute;
+            right: 0;
+        }
+
+        .frame {
+            display: flex;
+
+        }
+
+        .top_box {
+            height: 70%;
+            border: 1px red solid;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+
+        }
+
+        .top_box::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            vertical-align: middle;
+        }
+
+        .mid_box {
+            height: 20%;
+            border: 1px red solid;
+
+        }
+
+        .bottom_box {
+            height: 10%;
+            border: 1px red solid;
+            text-align: center;
+            background: #cccccc;
+            transition: 1s;
+            cursor: pointer;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .bottom_box:hover {
+            background: #000;
+            color: #cccccc;
+        }
+
+        .bottom_box::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            vertical-align: middle;
+        }
+
+        .outside-frame {
+            background: #FF686B;
+            position: relative;
+        }
+
+        .clear_frame {
+            position: absolute;
+            bottom: 2%;
+            right: 20%;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+        }
+
+        .btn_1 {
+            position: absolute;
+            top: 1%;
+            right: 0.5%;
+
+            border-radius: 0 10px 10px 0;
+        }
+
+        .input_1 {
+            border-radius: 10px 0 0 10px;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /* #imgset{
+            position: absolute;
+            bottom: 0;
+            height: 300px;
+        }
+        */
+        .imgbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .change_frame {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+        }
+
+        .btn_3 {
+            position: absolute;
+            top: 5%;
+            left: 0;
+        }
+
+        .btn_4 {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+        }
+
+        .btn_5 {
+            position: absolute;
+            bottom: 1%;
+            left: 0%;
+        }
+
+        .btn_6 {
+            position: absolute;
+            bottom: 1%;
+            right: 1%;
+        }
+
+        .now_color {
+            background: rgb(252, 71, 71);
+            position: absolute;
+            right: 5%;
+            top: 83.5%;
+            border-radius: 50%;
+            border: 3px solid #ffffff
+        }
+
+        .paint_function {
+            background: #a5ffd6;
+            font-family: "微軟正黑體";
+            position: absolute;
+            bottom: 1%;
+            left: 38.2%;
+            text-align: center;
+            border-radius: 50px 50px 50px 50px;
+            font-weight: 900;
+            color: rgb(252, 71, 71);
+            box-shadow: 2px 2px 2px #555555;
+        }
+
+
+        /*
+        .money_1{
+            top: 5%;
+            left: 5%;
+        }
+        .money_5{
+            top: 5%;
+            left: 15%;
+        }
+        .money_10{
+            top: 5%;
+            left: 25%;
+        }
+        .money_50{
+            top: 5%;
+            left: 35%;
+        }
+        .money_100{
+            top: 5%;
+            left: 45%;
+        }
+        .money_500{
+            top: 5%;
+            left: 55%;
+        }
+        .money_1000{
+            top: 5%;
+            left: 65%;
+        }  */
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="options">
+        <button id="imageUploader"></button>
+        <input type="file" id="file">
+    </div> -->
+
+
+
+
+
+    <div class="outside-frame">
+        <div class="frame">
+            <canvas id="background_canvas"></canvas>
+
+            <canvas id="canvas" class=""></canvas>
+
+
+        </div>
+
+        <div id="imgset">
+            <div class="imgbox money money_1">
+                <img id="defaultImg" src="img/fan-solid_yellow.svg" alt="1" draggable>
+
+                <select id="editable-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+            <div class="imgbox money money_5">
+                <img id="defaultImg" src="img/fan-solid_red.svg" alt="1" draggable>
+
+                <select id="editable-select_2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="imgbox money money_10">
+                <img id="defaultImg" src="img/fan-solid_blue.svg" alt="1" draggable>
+
+                <select id="editable-select_3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="imgbox money money_50">
+                <img id="defaultImg" src="img/fan-solid_green.svg" alt="1" draggable>
+
+                <select id="editable-select_4">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+
+
+
+
+
+        </div>
+
+        <div class="paint_function">點選上方上色</div>
+        <div class="clear_frame">
+            <input type="text" class="input_1 animated bounceInUp " onkeyup="return ValidateNumber($(this),value) ">
+
+
+
+            <button class="btn_1">
+
+                <img src="img/trash-alt-solid.svg" alt="">
+            </button>
+
+        </div>
+
+        <div class="menu_frame">
+
+            <nav class="menu">
+                <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+                <label class="menu-open-button" for="menu-open">
+                    <span class="hamburger hamburger-1"></span>
+                    <span class="hamburger hamburger-2"></span>
+                    <span class="hamburger hamburger-3"></span>
+                </label>
+
+                <a href="#" class="menu-item yellow"> </a>
+                <a href="#" class="menu-item red"> </a>
+                <a href="#" class="menu-item blue"> </a>
+                <a href="#" class="menu-item green"> </a>
+
+
+            </nav>
+
+
+            <!-- filters -->
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1px">
+                <defs>
+                    <filter id="shadowed-goo">
+
+                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                            result="goo" />
+                        <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                        <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2"
+                            result="shadow" />
+                        <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                        <feComposite in2="shadow" in="goo" result="goo" />
+                        <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                    </filter>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                            result="goo" />
+                        <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                    </filter>
+                </defs>
+            </svg>
+
+        </div>
+
+        <div class="now_color">
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var money_dollar_img = true
+        var img_1_dollar = ""
+        var items_img = ""
+
+        var moveMoney = 0
+        var moveMoney_one = 0
+        var moveMoney_five = 0
+        var moveMoney_ten = 0
+        var moveMoney_fifty = 0
+        var moveMoney_oneHundred = 0
+        var moveMoney_fiveHundred = 0
+        var moveMoney_oneThousand = 0
+
+
+
+        var money = 0
+        var change_money = 0
+        var change_to_yellow = false
+        var change_to_blue = false
+        var change_to_red = false
+        var change_to_green = false
+
+        var w = 1920, h = 900;
+        var iw = $(window).innerWidth(), ih = $(window).innerHeight();
+        var pRatio = window.devicePixelRatio || 0, xRatio = iw / w, yRatio = ih / h, sRatio = 1;
+        sRatio = Math.min(xRatio, yRatio);
+        console.log("WU0 H96" + sRatio)
+        const canvas = new fabric.Canvas('canvas', {
+            width: Math.round(1920 * sRatio),
+            height: Math.round(700 * sRatio)
+            // isDrawingMode: true,
+
+        })
+
+        $(".yellow").click(function () {
+            change_to_yellow = true
+            $(this).addClass("on_choosed")
+            console.log(change_to_yellow)
+            $('.now_color').css("background", "rgb(248, 248, 116)")
+            $('canvas').addClass("change_cursor")
+            change_to_blue = false
+            change_to_red = false
+            change_to_green = false
+        })
+
+
+        $(".blue").click(function () {
+            change_to_blue = true
+            $(this).addClass("on_choosed")
+            console.log(change_to_blue)
+            $('.now_color').css("background", "rgb(73, 73, 226)")
+            $('canvas').addClass("change_cursor")
+            change_to_yellow = false
+            change_to_red = false
+            change_to_green = false
+        })
+
+        $(".red").click(function () {
+            change_to_red = true
+            $(this).addClass("on_choosed")
+            console.log(change_to_red)
+            $('.now_color').css("background", "rgb(252, 71, 71)")
+            $('canvas').addClass("change_cursor")
+
+            change_to_yellow = false
+            change_to_blue = false
+            change_to_green = false
+        })
+        $(".green").click(function () {
+            change_to_green = true
+            $(this).addClass("on_choosed")
+            console.log(change_to_green)
+            $('.now_color').css("background", "rgb(88, 138, 88)")
+            $('canvas').addClass("change_cursor")
+
+            change_to_yellow = false
+            change_to_blue = false
+            change_to_red = false
+        })
+        $('.menu-open-button').click(function () {
+            change_to_yellow = false
+            change_to_blue = false
+            change_to_red = false
+            change_to_green = false
+            $('canvas').removeClass("change_cursor")
+            if ($(".paint_function").text() == "點選上方上色") {
+                $(".paint_function").text("點X關閉上色")
+
+            } else if ($(".paint_function").text() == "點X關閉上色") {
+                $(".paint_function").text("點選上方上色")
+            }
+
+        })
+
+
+        const imageUploader = document.querySelector('#imageUploader')
+        const file = document.querySelector('#file')
+        const imgset = document.querySelector('#imgset')
+        const defaultImg = document.querySelector('#defaultImg')
+        let movingImage
+        let imgDragOffset = {
+            offsetX: 0,
+            offsetY: 0
+        }
+        function uploadFile(e) {
+            file.click()
+        }
+
+        function saveImg(e) {
+            if (e.target.tagName.toLowerCase() === 'img') {
+                console.log(e)
+
+                imgDragOffset.offsetX = e.clientX - e.target.offsetLeft
+                imgDragOffset.offsetY = e.clientY - e.target.offsetTop
+                movingImage = e.target
+            }
+        }
+
+        function handleFile() {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(this.files[0])
+            fileReader.onload = (e) => {
+                // 圖片 base64
+                const dataURL = e.target.result
+                const img = document.createElement('img')
+                img.draggable = true
+                img.src = dataURL
+                imgset.appendChild(img)
+            }
+        }
+        function dropImg(e) {
+            const { offsetX, offsetY } = e.e
+            console.log(e)
+            const image = new fabric.Image(movingImage, {
+                width: movingImage.naturalWidth,
+                height: movingImage.naturalHeight,
+                scaleX: movingImage.width / movingImage.naturalWidth,
+                scaleY: movingImage.height / movingImage.naturalHeight,
+                top: offsetY - imgDragOffset.offsetY,
+                left: offsetX - imgDragOffset.offsetX + spcial_move
+            })
+            canvas.add(image)
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+
+        }
+
+        // imageUploader.addEventListener('click', uploadFile, true)
+        canvas.on('drop', dropImg)
+
+        defaultImg.addEventListener('mousedown', saveImg)
+        imgset.addEventListener('mousedown', saveImg)
+        canvas.on('mouse:over', e => {
+            if (e.target) {
+                e.target.bringToFront()
+
+            }
+            // canvas.moveTo(e.target, 0);
+        })
+        let colorToggle = false
+        canvas.on('mouse:down', e => {
+            console.log(e)
+
+            const active = e.target
+            if (change_to_blue && active) {
+                let blue = document.querySelector('.money_10 img')
+
+
+                const image = new fabric.Image(blue, {
+                    width: e.target.naturalWidth,
+                    height: e.target.naturalHeight,
+                    scaleX: e.target.scaleX,
+                    scaleY: e.target.scaleY,
+
+                    top: e.target.top,
+                    left: e.target.left
+                })
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                canvas.add(image)
+                console.log(e.target)
+                colorToggle = !colorToggle
+                canvas.renderAll()
+            }
+            if (change_to_red && active) {
+                let red = document.querySelector('.money_5 img')
+
+
+                const image = new fabric.Image(red, {
+                    width: e.target.naturalWidth,
+                    height: e.target.naturalHeight,
+                    scaleX: e.target.scaleX,
+                    scaleY: e.target.scaleY,
+
+                    top: e.target.top,
+                    left: e.target.left
+                })
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                canvas.add(image)
+                colorToggle = !colorToggle
+                canvas.renderAll()
+            }
+            if (change_to_yellow && active) {
+                let yellow = document.querySelector('.money_1 img')
+
+
+                const image = new fabric.Image(yellow, {
+                    width: e.target.naturalWidth,
+                    height: e.target.naturalHeight,
+                    scaleX: e.target.scaleX,
+                    scaleY: e.target.scaleY,
+
+                    top: e.target.top,
+                    left: e.target.left
+                })
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                canvas.add(image)
+                colorToggle = !colorToggle
+                canvas.renderAll()
+            }
+            if (change_to_green && active) {
+                let green = document.querySelector('.money_50 img')
+
+
+                const image = new fabric.Image(green, {
+                    width: e.target.naturalWidth,
+                    height: e.target.naturalHeight,
+                    scaleX: e.target.scaleX,
+                    scaleY: e.target.scaleY,
+
+                    top: e.target.top,
+                    left: e.target.left
+                })
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                canvas.add(image)
+                e.target._element.alt = 1
+                colorToggle = !colorToggle
+                canvas.renderAll()
+            }
+            canvas.renderAll()
+
+        })
+
+
+
+
+        canvas.on('object:moved', (e) => {
+            console.log(e)
+            if (e.e.clientY > canvas.height) {
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                setTimeout(function ww() {
+                    var items = canvas.getObjects()
+                    var Array_sum
+                    var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                    for (i = 0; i < items.length; i++) {
+                        ArrTest[i] = parseInt(items[i]._element.alt)
+                        console.log(items[i]._element.alt)
+
+                    }
+                    console.log(SumData(ArrTest))
+                    Array_sum = SumData(ArrTest)
+                    $(".input_1").val(Array_sum)
+                    console.log($(".input_1").val())
+                }, 500)
+            } else if (e.e.clientX > canvas.width) {
+                money = e.target._element.alt
+                console.log(e)
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                $(".top_box").text(money)
+
+
+            } else if (e.e.clientX > canvas.width && e.e.clientY > canvas.height) {
+                canvas.getActiveObjects().forEach((obj) => {
+                    canvas.remove(obj)
+                });
+                canvas.discardActiveObject().renderAll()
+                setTimeout(function ww() {
+                    var items = canvas.getObjects()
+                    var Array_sum
+                    var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                    for (i = 0; i < items.length; i++) {
+                        ArrTest[i] = parseInt(items[i]._element.alt)
+                        console.log(items[i]._element.alt)
+
+                    }
+                    console.log(SumData(ArrTest))
+                    Array_sum = SumData(ArrTest)
+                    $(".input_1").val(Array_sum)
+                    console.log($(".input_1").val())
+                }, 500)
+            }
+        })
+
+
+
+
+        $('#editable-select').editableSelect({ effects: 'fade', filter: false });
+        $('#editable-select_2').editableSelect({ effects: 'fade', filter: false });
+        $('#editable-select_3').editableSelect({ effects: 'fade', filter: false });
+        $('#editable-select_4').editableSelect({ effects: 'fade', filter: false });
+
+
+
+        //判斷輸入數字
+        var output_thousand_number = 0
+        var output_five_hundred_number = 0
+        var output_one_hundred_number = 0
+        var output_fifty_number = 0
+        var output_ten_number = 0
+        var output_five_number = 0
+        var output_one_number = 0
+        var arr_one = []
+        var arr_two = []
+        var arr_three = []
+        var arr_four = []
+        var arr_five = []
+
+        $("#editable-select ").blur(function () {
+            if ($(this).val() > 10) {
+                $(this).val(10)
+
+                console.log("超過數字")
+            }
+            output_one_number = $("#editable-select").val()
+
+            // $(this).val("")
+
+            console.log(width_img + "每次")
+            for (i = 0; i < output_one_number; i++) {
+                var s_1 = 0
+                var s_1_1 = 0
+                // var w = 0 
+                const imgEl_1 = document.createElement('img')
+                imgEl_1.src = "img/fan-solid_yellow.svg"
+                imgEl_1.alt = '1'
+
+                imgEl_1.onload = (e) => {
+
+
+                    const image = new fabric.Image(imgEl_1, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+
+                        top: 50,
+                        left: 0
+                    })
+                    canvas.add(image)
+
+
+
+
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+                    arr_one.push(image)
+                    console.log(arr_one)
+                    if (arr_one.length <= 5) {
+                        s_1 += i + canvas.height / 10
+
+                        image.top = s_1
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + moveMoney_one, {
+                            duration: 600 + s_1 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_one.length > 5 && arr_one.length <= 10) {
+                        s_1_1 += i + canvas.height / 10
+
+                        image.top = s_1_1
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + moveMoney_one, {
+                            duration: 600 + s_1_1 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+
+
+
+                }
+            }
+            max_width = (canvas.width - (canvas.width / 6))
+            if (moveMoney_one > max_width) {
+                moveMoney_one = (canvas.width / 200) * 30 + 10
+
+            } else if (moveMoney_one < canvas.width) {
+                moveMoney_one += (canvas.width / 200) * 30
+
+            }
+
+            arr_one = []
+            $(this).val("")
+
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+
+        })
+
+
+
+
+
+
+        $("#editable-select_2 ").blur(function () {
+            if ($(this).val() > 10) {
+                $(this).val(10)
+
+                console.log("超過數字")
+            }
+            output_five_number = $("#editable-select_2").val()
+
+            // $(this).val("")
+            moveMoney_five += 20
+
+
+
+            for (i = 0; i < output_five_number; i++) {
+                var s_2 = 0
+                var s_2_2 = 0
+
+                // var w = 0 
+                const imgEl_2 = document.createElement('img')
+                imgEl_2.src = "img/fan-solid_red.svg"
+                imgEl_2.alt = '1'
+
+                imgEl_2.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_2, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+
+
+
+
+                    // image.left = w
+
+                    canvas.add(image)
+
+
+                    canvas.renderAll();
+
+
+
+                    image._element.alt = '1'
+
+                    arr_two.push(image)
+
+                    if (arr_two.length <= 5) {
+                        s_2 += i + canvas.height / 10
+
+                        image.top = s_2
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + moveMoney_five + (canvas.width / 8.5), {
+                            duration: 600 + s_2 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_two.length > 5 && arr_two.length <= 10) {
+                        s_2_2 += i + canvas.height / 10
+
+                        image.top = s_2_2
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + moveMoney_five + (canvas.width / 8.5), {
+                            duration: 600 + s_2_2 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+            max_width = (canvas.width - (canvas.width / 5.5))
+            if (moveMoney_five > (max_width - (canvas.width / 5.5))) {
+                moveMoney_five = (canvas.width / 200) * 30 + 10
+
+            } else if (moveMoney_five < canvas.width) {
+                moveMoney_five += (canvas.width / 200) * 30
+
+            }
+
+            arr_two = []
+
+            $(this).val("")
+
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+
+        })
+
+
+        $("#editable-select_3 ").blur(function () {
+            if ($(this).val() > 10) {
+                $(this).val(10)
+
+                console.log("超過數字")
+            }
+            output_ten_number = $("#editable-select_3").val()
+
+            // $(this).val("")
+            moveMoney_ten += 20
+
+
+
+            for (i = 0; i < output_ten_number; i++) {
+                var s_3 = 0
+                var s_3_3 = 0
+
+                // var w = 0 
+                const imgEl_3 = document.createElement('img')
+                imgEl_3.src = "img/fan-solid_blue.svg"
+                imgEl_3.alt = '1'
+
+                imgEl_3.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_3, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+                    canvas.add(image)
+                    canvas.renderAll();
+
+                    image._element.alt = '1'
+
+                    arr_three.push(image)
+
+                    if (arr_three.length <= 5) {
+                        s_3 += i + canvas.height / 10
+
+                        image.top = s_3
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + moveMoney_ten + (canvas.width / 4), {
+                            duration: 600 + s_3 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_three.length > 5 && arr_three.length <= 10) {
+                        s_3_3 += i + canvas.height / 10
+
+                        image.top = s_3_3
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + moveMoney_ten + (canvas.width / 4), {
+                            duration: 600 + s_3_3 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+            max_width = (canvas.width - (canvas.width / 4))
+            if (moveMoney_ten > (max_width - (canvas.width / 4))) {
+                moveMoney_ten = (canvas.width / 200) * 30 + 10
+
+            } else if (moveMoney_ten < canvas.width) {
+                moveMoney_ten += (canvas.width / 200) * 30
+
+            }
+
+            arr_three = []
+
+            $(this).val("")
+
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+
+        })
+
+        $("#editable-select_4 ").blur(function () {
+            if ($(this).val() > 10) {
+                $(this).val(10)
+
+                console.log("超過數字")
+            }
+
+            output_fifty_number = $("#editable-select_4").val()
+
+            // $(this).val("")
+
+            moveMoney_fifty += 20
+
+
+            console.log(moveMoney + "每次")
+
+            for (i = 0; i < output_fifty_number; i++) {
+                var s_4 = 0
+                var s_4_4 = 0
+                // var w = 0 
+                const imgEl_4 = document.createElement('img')
+                imgEl_4.src = "img/fan-solid_green.svg"
+                imgEl_4.alt = '1'
+
+                imgEl_4.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_4, {
+
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+
+                    canvas.add(image)
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+
+                    arr_four.push(image)
+
+                    if (arr_four.length <= 5) {
+                        s_4 += i + canvas.height / 10
+
+                        image.top = s_4
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + moveMoney_fifty + (canvas.width / 2.6), {
+                            duration: 600 + s_4 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_four.length > 5 && arr_four.length <= 10) {
+                        s_4_4 += i + canvas.height / 10
+
+                        image.top = s_4_4
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + moveMoney_fifty + (canvas.width / 2.6), {
+                            duration: 600 + s_4_4 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+            max_width = (canvas.width - (canvas.width / 3.5))
+            if (moveMoney_fifty > (max_width - (canvas.width / 3.5))) {
+                moveMoney_fifty = (canvas.width / 200) * 30 + 10
+
+            } else if (moveMoney_fifty < canvas.width) {
+                moveMoney_fifty += (canvas.width / 200) * 30
+
+            }
+
+            arr_four = []
+            $(this).val("")
+
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+
+        })
+
+
+
+
+
+
+
+
+
+
+        //以下為輸入總數產生錢幣
+
+        function ValidateNumber(e, pnumber) {
+            if (!/^\d+$/.test(pnumber)) {
+                $(e).val(/^\d+/.exec($(e).val()));
+            }
+            return false;
+        }
+
+        //KEY數字 輸出所KEY數字有幾張
+
+        var one_hundred_number = 0
+        var fifty_number = 0
+        var ten_number = 0
+        var five_number = 0
+        var one_number = 0
+
+        //暫時存放金錢
+        var temporary_storage = 0
+
+
+        $(".input_1").change(function () {
+            console.log("改變了文自")
+
+
+            canvas.clear();
+            if ($(".input_1").val() > 50) {
+                $(".input_1").val(50)
+            }
+
+
+            temporary_storage = $(".input_1").val()
+
+            //一百
+            if (temporary_storage > 40) {
+                one_hundred_number = Math.abs(40 - temporary_storage)
+                temporary_storage = temporary_storage - one_hundred_number
+            }
+            if (temporary_storage > 30) {
+                fifty_number = Math.abs(30 - temporary_storage)
+                temporary_storage = temporary_storage - fifty_number
+
+            }
+            if (temporary_storage > 20) {
+                ten_number = Math.abs(20 - temporary_storage)
+                temporary_storage = temporary_storage - ten_number
+            }
+            if (temporary_storage > 10) {
+                five_number = Math.abs(10 - temporary_storage)
+                temporary_storage = temporary_storage - five_number
+            }
+            if (temporary_storage > 0) {
+                one_number = Math.abs(0 - temporary_storage)
+            }
+
+
+
+            for (i = 0; i < one_number; i++) {
+                var s_1 = 0
+                var s_1_1 = 0
+                // var w = 0 
+                const imgEl_1 = document.createElement('img')
+                imgEl_1.src = "img/fan-solid.svg"
+                imgEl_1.alt = '1'
+
+                imgEl_1.onload = (e) => {
+
+
+
+                    const image = new fabric.Image(imgEl_1, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+
+                        top: 50,
+                        left: 0
+                    })
+                    canvas.add(image)
+
+
+
+
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+                    arr_one.push(image)
+                    console.log(arr_one)
+                    if (arr_one.length <= 5) {
+                        s_1 += i + canvas.height / 10
+
+                        image.top = s_1
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + (canvas.width / 6), {
+                            duration: 600 + s_1 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_one.length > 5 && arr_one.length <= 10) {
+                        s_1_1 += i + canvas.height / 10
+
+                        image.top = s_1_1
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + (canvas.width / 6), {
+                            duration: 600 + s_1_1 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+
+
+
+                }
+            }
+
+
+            arr_one = []
+            for (i = 0; i < five_number; i++) {
+                var s_2 = 0
+                var s_2_2 = 0
+
+                // var w = 0 
+                const imgEl_2 = document.createElement('img')
+                imgEl_2.src = "img/fan-solid.svg"
+                imgEl_2.alt = '1'
+
+                imgEl_2.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_2, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+
+
+
+
+                    // image.left = w
+
+                    canvas.add(image)
+
+
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+
+                    arr_two.push(image)
+
+                    if (arr_two.length <= 5) {
+                        s_2 += i + canvas.height / 10
+
+                        image.top = s_2
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + (canvas.width / 3), {
+                            duration: 600 + s_2 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_two.length > 5 && arr_two.length <= 10) {
+                        s_2_2 += i + canvas.height / 10
+
+                        image.top = s_2_2
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + (canvas.width / 3), {
+                            duration: 600 + s_2_2 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+
+
+            arr_two = []
+            for (i = 0; i < ten_number; i++) {
+                var s_3 = 0
+                var s_3_3 = 0
+
+                // var w = 0 
+                const imgEl_3 = document.createElement('img')
+                imgEl_3.src = "img/fan-solid_blue.svg"
+                imgEl_3.alt = '1'
+
+                imgEl_3.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_3, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+                    canvas.add(image)
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+
+                    arr_three.push(image)
+
+                    if (arr_three.length <= 5) {
+                        s_3 += i + canvas.height / 10
+
+                        image.top = s_3
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + (canvas.width / 2), {
+                            duration: 600 + s_3 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_three.length > 5 && arr_three.length <= 10) {
+                        s_3_3 += i + canvas.height / 10
+
+                        image.top = s_3_3
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + (canvas.width / 2), {
+                            duration: 600 + s_3_3 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+
+
+            arr_three = []
+            for (i = 0; i < fifty_number; i++) {
+                var s_4 = 0
+                var s_4_4 = 0
+                // var w = 0 
+                const imgEl_4 = document.createElement('img')
+                imgEl_4.src = "img/fan-solid_green.svg"
+                imgEl_4.alt = '1'
+
+                imgEl_4.onload = (e) => {
+
+                    const image = new fabric.Image(imgEl_4, {
+
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+                        top: 50,
+                        left: 0
+                    })
+
+
+                    canvas.add(image)
+                    canvas.renderAll();
+
+
+
+                    image._element.alt = '1'
+
+                    arr_four.push(image)
+
+                    if (arr_four.length <= 5) {
+                        s_4 += i + canvas.height / 10
+
+                        image.top = s_4
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + (canvas.width / 1.5), {
+                            duration: 600 + s_4 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_four.length > 5 && arr_four.length <= 10) {
+                        s_4_4 += i + canvas.height / 10
+
+                        image.top = s_4_4
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + (canvas.width / 1.5), {
+                            duration: 600 + s_4_4 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+                }
+            }
+
+
+            arr_four = []
+            for (i = 0; i < one_hundred_number; i++) {
+                var s_5 = 0
+                var s_5_5 = 0
+                // var w = 0 
+                const imgEl_1 = document.createElement('img')
+                imgEl_1.src = "img/fan-solid.svg"
+                imgEl_1.alt = '1'
+
+                imgEl_1.onload = (e) => {
+
+
+
+                    const image = new fabric.Image(imgEl_1, {
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                        scaleX: parseInt(width_img) / e.target.naturalWidth,
+                        scaleY: parseInt(height_img) / e.target.naturalHeight,
+
+                        top: 50,
+                        left: 0
+                    })
+                    canvas.add(image)
+
+
+
+
+                    canvas.renderAll();
+
+
+                    image._element.alt = '1'
+                    arr_five.push(image)
+                    if (arr_five.length <= 5) {
+                        s_5 += i + canvas.height / 10
+
+                        image.top = s_5
+
+                        image.animate('left', ((canvas.width / 200) - (canvas.width / 100)) * 15 + (canvas.width / 1.2), {
+                            duration: 600 + s_5 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+                    } else if (arr_five.length > 5 && arr_five.length <= 10) {
+                        s_5_5 += i + canvas.height / 10
+
+                        image.top = s_5_5
+
+                        image.animate('left', (canvas.width / 200) - (canvas.width / 100) + (canvas.width / 1.2), {
+                            duration: 600 + s_5_5 * 8,
+                            onChange: canvas.renderAll.bind(canvas),
+
+                            easing: fabric.util.ease.easeInOutBack
+                        })
+
+                    }
+
+
+
+                }
+            }
+
+
+            arr_five = []
+
+        })
+
+
+
+        function SumData(arr) {
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            };
+            return sum;
+        }
+
+
+
+        $(".btn_1").click(function () {
+            canvas.clear()
+            $(".top_box").text("")
+            setTimeout(function ww() {
+                var items = canvas.getObjects()
+                var Array_sum
+                var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                for (i = 0; i < items.length; i++) {
+                    ArrTest[i] = parseInt(items[i]._element.alt)
+                    console.log(items[i]._element.alt)
+
+                }
+                console.log(SumData(ArrTest))
+                Array_sum = SumData(ArrTest)
+                $(".input_1").val(Array_sum)
+                console.log($(".input_1").val())
+            }, 500)
+        })
+
+
+        fabric.Object.prototype.drawControls = function (ctx, styleOverride) {
+            styleOverride = styleOverride || {};
+            var wh = this._calculateCurrentDimensions(),
+                width = wh.x,
+                height = wh.y,
+                scaleOffset = styleOverride.cornerSize || this.cornerSize,
+                left = -(width + scaleOffset) / 2,
+                top = -(height + scaleOffset) / 2,
+                transparentCorners = typeof styleOverride.transparentCorners !== 'undefined' ?
+                    styleOverride.transparentCorners : this.transparentCorners,
+                hasRotatingPoint = typeof styleOverride.hasRotatingPoint !== 'undefined' ?
+                    styleOverride.hasRotatingPoint : this.hasRotatingPoint,
+                methodName = transparentCorners ? 'stroke' : 'fill';
+            ctx.save();
+            ctx.strokeStyle = ctx.fillStyle = styleOverride.cornerColor || this.cornerColor;
+            if (!this.transparentCorners) {
+                ctx.strokeStyle = styleOverride.cornerStrokeColor || this.cornerStrokeColor;
+            }
+            this._setLineDash(ctx, styleOverride.cornerDashArray || this.cornerDashArray, null);
+            // top-left
+            const cancel = new Image()
+            cancel.src = 'img/svgexport-11.svg'
+            ctx.drawImage(cancel, left + width, top, this.cornerSize, this.cornerSize)
+            // top-right
+            this._drawControl('tr', ctx, methodName,
+                left,
+                top, styleOverride);
+            // bottom-left
+            this._drawControl('bl', ctx, methodName,
+                left,
+                top + height, styleOverride);
+            // bottom-right
+            this._drawControl('br', ctx, methodName,
+                left + width,
+                top + height, styleOverride);
+            if (!this.get('lockUniScaling')) {
+                // middle-top
+                this._drawControl('mt', ctx, methodName,
+                    left + width / 2,
+                    top, styleOverride);
+                // middle-bottom
+                this._drawControl('mb', ctx, methodName,
+                    left + width / 2,
+                    top + height, styleOverride);
+                // middle-right
+                this._drawControl('mr', ctx, methodName,
+                    left + width,
+                    top + height / 2, styleOverride);
+                // middle-left
+                this._drawControl('ml', ctx, methodName,
+                    left,
+                    top + height / 2, styleOverride);
+            }
+            // middle-top-rotate
+            if (hasRotatingPoint) {
+                this._drawControl('mtr', ctx, methodName,
+                    left + width / 2,
+                    top - this.rotatingPointOffset, styleOverride);
+            }
+            ctx.restore();
+            return this;
+        },
+
+            fabric.Canvas.prototype._getActionFromCorner = function (target, corner, e) {
+                if (!corner) {
+                    return 'drag';
+                }
+                switch (corner) {
+                    case 'mtr':
+                        return 'rotate';
+                    case 'ml':
+                        break;
+                    case 'mr':
+                        return e[this.altActionKey] ? 'skewY' : 'scaleX';
+                    case 'mt':
+                    case 'mb':
+                        return e[this.altActionKey] ? 'skewX' : 'scaleY';
+                    case 'tr': // 增加左上刪除動作
+                        canvas.getActiveObjects().forEach((obj) => {
+                            canvas.remove(obj)
+                        });
+                        canvas.discardActiveObject().renderAll()
+                        setTimeout(function ww() {
+                            var items = canvas.getObjects()
+                            var Array_sum
+                            var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                            for (i = 0; i < items.length; i++) {
+                                ArrTest[i] = parseInt(items[i]._element.alt)
+                                console.log(items[i]._element.alt)
+
+                            }
+                            console.log(SumData(ArrTest))
+                            Array_sum = SumData(ArrTest)
+                            $(".input_1").val(Array_sum)
+                            console.log($(".input_1").val())
+                        }, 500)
+
+
+
+
+
+                        return 'deleted'
+                    default:
+                        return 'scale';
+                }
+            }
+
+        fabric.Object.prototype.setControlsVisibility({
+            bl: true, // 左下
+            br: true, // 右下
+            mb: false, // 下中
+            ml: false, // 中左
+            mr: false, // 中右
+            mt: false, // 上中
+            tl: true, // 上左
+            tr: true, // 上右
+            mtr: false // 旋轉控制鍵
+        })
+
+    </script>
+
+</body>
+
+</html>

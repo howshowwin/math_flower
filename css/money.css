@@ -1,0 +1,19 @@
+.money{
+display: flex;
+flex-direction: column;
+width: 150px;
+float: left;
+}
+
+
+
+
+.es-list {
+    text-align: center;
+    
+}
+
+.es-input {
+    max-width: 12vw;
+    text-align: center;
+}
