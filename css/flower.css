@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+.cursor2{
+        cursor: url("../img/ms.cur") 0 60 ,auto !important
+}
+body {
+    position: relative;
+}
+.display_none{
+    display: none;
+}
+.background1 {
+    background: url(../img/index1.png);
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+}
+
+.background-img {
+    background: url(../img/index.png);
+    background-size: cover;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+}
+
+.background {
+    position: relative;
+}
+
+.color {
+    cursor: pointer;
+}
+
+.color_1 {
+    background: url(../img/c1.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 79.7%;
+}
+
+.color_2 {
+    background: url(../img/c2.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 82.69%;
+}
+
+.color_3 {
+    background: url(../img/c3.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 85.6%;
+}
+
+.color_4 {
+    background: url(../img/c4.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 88.6%;
+}
+
+.color_5 {
+    background: url(../img/c5.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 91.5%;
+}
+
+.color_6 {
+    background: url(../img/c6.png);
+    background-size: cover;
+    position: absolute;
+    top: 44.8%;
+    left: 94.5%;
+}
+
+.color_7 {
+    background: url(../img/c7.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 79.7%;
+}
+
+.color_8 {
+    background: url(../img/c8.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 82.69%;
+}
+
+.color_9 {
+    background: url(../img/c9.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 85.6%;
+}
+
+.color_10 {
+    background: url(../img/c10.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 88.6%;
+}
+
+.color_11 {
+    background: url(../img/c11.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 91.5%;
+}
+
+.color_12 {
+    background: url(../img/c12.png);
+    background-size: cover;
+    position: absolute;
+    top: 51.3%;
+    left: 94.5%;
+}
+
+/* 返回紐 */
+
+.return {
+    background: url(../img/re1.png);
+    background-size: cover;
+    position: absolute;
+    top: 7.3%;
+    left: 80.7%;
+    cursor: pointer;
+}
+
+/* 確認紐 */
+
+.enter {
+    background: url(../img/en1.png);
+    background-size: cover;
+    position: absolute;
+    top: 35.4%;
+    left: 93.3%;
+    cursor: pointer;
+}
+
+/* 總數 */
+
+.count {
+    /* background: red; */
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 11.5%;
+    left: 82.1%;
+    background: none;
+    outline: none;
+    border: 0px;
+}
+
+/* 清除垃圾 */
+
+.garbage {
+    background: url(../img/btGb.png);
+    background-size: cover;
+    position: absolute;
+    top: 62.5%;
+    left: 81.1%;
+    cursor: pointer;
+}
+
+/* 鼠標 */
+
+.cursor {
+    background: url(../img/btVOn.png);
+    background-size: cover;
+    position: absolute;
+    top: 63.9%;
+    left: 90.1%;
+    cursor: pointer;
+}
+
+/* 回上一頁 */
+
+.backpage {
+    background: url(../img/btH.png);
+    background-size: cover;
+    position: absolute;
+    top: 87%;
+    left: 86.1%;
+    cursor: pointer;
+}
+
+/* 關閉頁面 */
+
+.close {
+    background: url(../img/btX.png);
+    background-size: cover;
+    position: absolute;
+    top: 87%;
+    left: 92.1%;
+    cursor: pointer;
+}
+
+/* 數量兩字 */
+
+.numberText {
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 84.9%;
+    left: 4%;
+}
+
+/* 內建花瓣 */
+
+.img_flower {
+    cursor: pointer;
+}
+
+.img_fR {
+    position: absolute;
+    top: 83%;
+    left: 12.1%;
+}
+
+.img_fY {
+    position: absolute;
+    top: 83%;
+    left: 42.5%;
+}
+
+.img_fB {
+    position: absolute;
+    top: 83%;
+    left: 27.4%;
+}
+
+.img_fG {
+    position: absolute;
+    top: 83%;
+    left: 58%;
+}
+
+/* 三角形 */
+
+.tri_btn {
+    cursor: pointer;
+}
+
+.redbtn {
+    background: url(../img/fRv.png);
+    background-size: cover;
+    position: absolute;
+    top: 88.8%;
+    left: 23.3%;
+}
+
+.bluebtn {
+    background: url(../img/fRv_1.png);
+    background-size: cover;
+    position: absolute;
+    top: 88.8%;
+    left: 38.7%;
+}
+
+.yellowbtn {
+    background: url(../img/fRv_2.png);
+    background-size: cover;
+    position: absolute;
+    top: 88.8%;
+    left: 53.8%;
+}
+
+.greenbtn {
+    background: url(../img/fRv_3.png);
+    background-size: cover;
+    position: absolute;
+    top: 88.8%;
+    left: 69.5%;
+}
+
+/* 延伸區域 */
+
+.choose_area {
+    background: url(../img/nB.png);
+    background-size: cover;
+    position: absolute;
+    transform-origin: 50% 100%;
+    transform: scale(0);
+    transition: 0.2s;
+}
+
+.redchoose {
+    top: 32.8%;
+    left: 18.5%;
+}
+
+.bluechoose {
+    top: 32.8%;
+    left: 34%;
+}
+
+.yellowchoose {
+    top: 32.8%;
+    left: 49.2%;
+}
+
+.greenchoose {
+    top: 32.8%;
+    left: 64.8%;
+}
+
+/* 延伸區域內數字 */
+
+.number {
+    font-family: "微軟正黑體";
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.numbox {
+    position: absolute;
+    left: 4%;
+    top: 2%;
+}
+
+.redchoose .number {
+    color: #ED5358;
+}
+
+.bluechoose .number {
+    color: #0071C0;
+}
+
+.yellowchoose .number {
+    color: #FDC333;
+}
+
+.greenchoose .number {
+    color: #00AF50;
+}
+
+.number:hover {
+    background: #fff;
+}
+
+/* 數量輸入框 */
+
+.enter_red {
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 87.4%;
+    left: 19.5%;
+    font-weight: 700;
+    background: none;
+    outline: none;
+    border: 0px;
+    color: #ED5358;
+}
+.enter_blue {
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 87.4%;
+    left: 34.9%;
+    background: none;
+    font-weight: 700;
+    outline: none;
+    border: 0px;
+    color: #0071C0;
+
+}
+.enter_yellow {
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 87.4%;
+    left: 50%;
+    background: none;
+    font-weight: 700;
+    outline: none;
+    border: 0px;
+    color: #C6942E;
+}
+.enter_green {
+    font-family: "微軟正黑體";
+    position: absolute;
+    top: 87.4%;
+    left: 65.7%;
+    background: none;
+    font-weight: 700;
+    outline: none;
+    border: 0px;
+    color: #00AF50;
+
+}
+.enter_input{
+    text-align:right;
+}
+
+/* canvas */
+.canvas-container{
+    border: green 1px solid;
+    position: absolute;
+    top: 3.6%;
+    left: 2.4%;
+}
