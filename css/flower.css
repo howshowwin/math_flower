@@ -408,7 +408,6 @@ body {
 
 /* canvas */
 .canvas-container{
-    border: green 1px solid;
     position: absolute;
     top: 3.6%;
     left: 2.4%;

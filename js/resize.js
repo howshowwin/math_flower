@@ -216,11 +216,11 @@ $('body').keydown(function (event) {
         if (red_flower != "") {
             redcount += 1.02
         }
-        if (redcount > 4.8) {
+        if (redcount > 4.2) {
             redcount = 0
             redlittlemove += 10
         }
-        if (redlittlemove > 100) {
+        if (redlittlemove > 30) {
             redlittlemove = 0
         }
         console.log(redcount)
@@ -330,18 +330,18 @@ $('body').keydown(function (event) {
 
         // blue bbbbbbbbbbbbbbbbbbbbbbbbbbbb
 
-
+        
         if (blue_flower != "") {
             bluecount += 1.03
         }
-        if (bluecount > 4.8) {
+        if (bluecount > 4.3) {
             bluecount = 0
             bluelittlemove += 10
         }
-        if (bluelittlemove > 100) {
+        if (bluelittlemove > 30) {
             bluelittlemove = 0
         }
-        console.log(bluecount)
+        console.log(bluecount+"jiejioeoe")
         numnum1 = -1
         var arr_two = new Array()
         for (i = 0; i < blue_flower; i++) {
@@ -443,7 +443,7 @@ $('body').keydown(function (event) {
             yellowcount = 0
             yellowlittlemove += 10
         }
-        if (yellowlittlemove > 100) {
+        if (yellowlittlemove > 30) {
             yellowlittlemove = 0
         }
         console.log(yellowcount)
@@ -541,7 +541,7 @@ $('body').keydown(function (event) {
             greencount = 0
             greenlittlemove += 10
         }
-        if (greenlittlemove > 100) {
+        if (greenlittlemove > 30) {
             greenlittlemove = 0
         }
         console.log(greencount)

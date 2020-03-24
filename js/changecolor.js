@@ -76,6 +76,14 @@ canvas.on('object:selected', e => {
 $('.garbage').click(function () {
     canvas.clear()
     $('.count').val('')
+    redlittlemove = 0
+    bluelittlemove = 0
+    yellowlittlemove = 0
+    greenlittlemove = 0
+     redcount = -1
+     bluecount = 0
+     yellowcount = 1
+     greencount = 2
 })
 $('.close').click(function () {
 
