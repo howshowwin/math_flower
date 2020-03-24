@@ -214,7 +214,7 @@ $('body').keydown(function (event) {
         // red bbbbbbbbbbbbbbbbbbbbbbbbbbb
         numnum = -1
         if (red_flower != "") {
-            redcount += 1.02
+            redcount += 1
         }
         if (redcount > 4.2) {
             redcount = 0
@@ -332,7 +332,7 @@ $('body').keydown(function (event) {
 
         
         if (blue_flower != "") {
-            bluecount += 1.03
+            bluecount += 1
         }
         if (bluecount > 4.3) {
             bluecount = 0
@@ -393,7 +393,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout))+(Math.round(10 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -409,7 +409,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout)) +(Math.round(10 * sRout))+ (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -437,7 +437,7 @@ $('body').keydown(function (event) {
 
 
         if (yellow_flower != "") {
-            yellowcount += 1.04
+            yellowcount += 1
         }
         if (yellowcount > 4.8) {
             yellowcount = 0
@@ -498,7 +498,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout))+(Math.round(20 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -514,7 +514,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout))+(Math.round(20 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -535,7 +535,7 @@ $('body').keydown(function (event) {
 
 
         if (green_flower != "") {
-            greencount += 1.05
+            greencount += 1
         }
         if (greencount > 4.8) {
             greencount = 0
@@ -596,7 +596,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout)) +(Math.round(30 * sRout))+ (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -612,7 +612,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout))+(Math.round(30 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 

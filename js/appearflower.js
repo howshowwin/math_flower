@@ -1,4 +1,4 @@
-function idontknowwhatiwrite(){
+function idontknowwhatiwrite() {
     var redcount = -1
     var bluecount = 0
     var yellowcount = 1
@@ -13,6 +13,7 @@ function idontknowwhatiwrite(){
     var numnum2 = 0
     var numnum3 = 0
     var numnum4 = 0
+    
 
     var redEnterNum = 0
     var blueEnterNum = 0
@@ -25,6 +26,8 @@ function idontknowwhatiwrite(){
     if (countval > 50) {
         var r = confirm("欄位數字不得大於50，按確認後將會自動跳轉成50，取消將無動作")
         if (r == true) {
+            canvas.clear();
+
             countval = 50
             $('.count').val(50)
             temporary_storage = $('.count').val()
@@ -120,7 +123,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (40 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                image.animate('left', (70 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -136,7 +139,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (160 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                image.animate('left', (190 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -217,7 +220,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(30 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                image.animate('left', (Math.round(40 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -233,7 +236,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(150 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                image.animate('left', (Math.round(160 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -310,7 +313,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(20 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                image.animate('left', (Math.round(10 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -326,7 +329,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(140 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                image.animate('left', (Math.round(130 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -407,7 +410,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(10 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                image.animate('left', (Math.round(-20 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -423,7 +426,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (Math.round(130 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                image.animate('left', (Math.round(100 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -490,7 +493,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (10 * sRout) + (maxWidthRed * 4) + (redlittlemove * sRout), {
+                image.animate('left', (-30 * sRout) + (maxWidthRed * 4) + (redlittlemove * sRout), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -506,7 +509,7 @@ function idontknowwhatiwrite(){
 
                     easing: fabric.util.ease.easeInOutExpo
                 })
-                image.animate('left', (130 * sRout) + (maxWidthRed * 4) + (redlittlemove * sRout), {
+                image.animate('left', (90 * sRout) + (maxWidthRed * 4) + (redlittlemove * sRout), {
                     duration: 800 + s_1,
                     onChange: canvas.renderAll.bind(canvas),
 
@@ -530,12 +533,15 @@ function idontknowwhatiwrite(){
 }
 
 $('.enter').click(function () {
-    canvas.clear();
 
-   
+
 
     idontknowwhatiwrite()
 
 
 
 })
+setTimeout(function () {
+    idontknowwhatiwrite()
+
+}, 200)
