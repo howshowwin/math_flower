@@ -565,7 +565,7 @@ $('body').keydown(function (event) {
                     scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
 
                     top: Math.round(650 * sRout),
-                    left: Math.round(780 * sRout)
+                    left: Math.round(1100 * sRout)
                 })
                 canvas.add(image)
 
