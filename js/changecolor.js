@@ -18,11 +18,13 @@ $('.cursor').click(function () {
 })
 canvas.on('mouse:down', e => {
     // console.log(e)
- 
+
     const active = e.target
-    console.log( e )
+
+    console.log(e)
     if (oncolorpickmode == 1 && active) {
-       
+        canvas.discardActiveObject(active);
+
         const imgQ = document.createElement('img')
         imgQ.src = `img/${PickColor}`
         imgQ.alt = '1'
@@ -43,17 +45,18 @@ canvas.on('mouse:down', e => {
                 borderColor: '#01B0F1'
             })
 
-            canvas.getActiveObjects().forEach((obj) => {
-                canvas.remove(obj)
-            });
+
+            canvas.remove(active)
+
             canvas.discardActiveObject().renderAll()
-                // canvas.add(image)
-                 canvas.add(image)
+            // canvas.add(image)
+            canvas.add(image)
 
             canvas.renderAll();
 
-            canvas.setActiveObject(image);
+            // canvas.discardActiveObject(image);
             image._element.alt = '1'
+
         }
 
     }

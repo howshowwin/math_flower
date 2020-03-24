@@ -490,3 +490,4 @@ fabric.Canvas.prototype.cursorMap[5] = 'pointer'
 // fabric.Canvas.prototype.cursorMap[8] = 'pointer'
 // fabric.Canvas.prototype.cursorMap[9] = 'pointer'
 // fabric.Canvas.prototype.cursorMap[1] = 'pointer'
+

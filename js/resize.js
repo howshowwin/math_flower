@@ -33,8 +33,9 @@ function countRemove() {
 var obj_padding
 var cursor_padding
 var sRout
-
+var change_img = $('.img_fR').css("width")
 function convertSizeALL(className) {
+
     var w = 1920, h = 900;
     var iw = $(window).innerWidth(), ih = $(window).innerHeight();
     var pRatio = window.devicePixelRatio || 0, xRatio = iw / w, yRatio = ih / h, sRatio = 1;
@@ -60,6 +61,30 @@ function convertSizeALL(className) {
     canvas.setHeight(665 * sRatio);
     canvas.setWidth(1415 * sRatio);
     $('.canvas-container').css({ borderRadius: Math.round(50 * sRatio) })
+    canvas.discardActiveObject();
+
+
+  var nowW =  $('.img_fR').css('width')
+  console.log(nowW)
+  console.log(change_img)
+
+  var countscale =  parseInt(nowW)/ parseInt(change_img) 
+    var objse = canvas.getObjects()
+    objse.forEach((obj) => {
+      
+
+        obj.scaleX = obj.scaleX * countscale
+
+        obj.scaleY = obj.scaleY * countscale
+        obj.left = obj.left * countscale
+        obj.top = obj.top *countscale
+        obj.setCoords()
+        // obj.width=  obj._element.naturalWidth* scalenow
+        // obj.height=  obj._element.naturalHeigh* scalenow
+
+
+    });
+    change_img =nowW   
 
 
 
@@ -237,7 +262,7 @@ $('body').keydown(function (event) {
                 arr_one.push(image)
 
                 console.log(arr_one)
-                var maxWidthRed = 280 * sRout
+                var maxWidthRed = 265 * sRout
                 numnum++
                 console.log(numnum)
                 // for (i = 0; i < arr_one.length; i++) {
@@ -251,7 +276,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (10 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                    image.animate('left', (45 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -267,7 +292,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (130 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                    image.animate('left', (165 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -356,7 +381,7 @@ $('body').keydown(function (event) {
                 numnum1++
                 console.log(numnum)
                 // console.log(arr_two)
-                var maxWidthblue = Math.round(280 * sRout)
+                var maxWidthblue = Math.round(265 * sRout)
                 // for (i = 0; i < arr_two.length; i++) {
                 if (arr_two.length <= 5) {
                     s_1 += 10
@@ -368,7 +393,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(10 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -384,7 +409,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(130 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -461,7 +486,7 @@ $('body').keydown(function (event) {
                 numnum2++
                 console.log(numnum)
                 // console.log(arr_two)
-                var maxWidthyellow = Math.round(280 * sRout)
+                var maxWidthyellow = Math.round(265 * sRout)
                 // for (i = 0; i < arr_two.length; i++) {
                 if (arr_three.length <= 5) {
                     s_1 += 10
@@ -473,7 +498,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(10 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -489,7 +514,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(130 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -559,7 +584,7 @@ $('body').keydown(function (event) {
                 numnum3++
                 console.log(numnum)
                 // console.log(arr_two)
-                var maxWidthgreen = Math.round(280 * sRout)
+                var maxWidthgreen = Math.round(265 * sRout)
                 // for (i = 0; i < arr_two.length; i++) {
                 if (arr_four.length <= 5) {
                     s_1 += 10
@@ -571,7 +596,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(10 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                    image.animate('left', (Math.round(45 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -587,7 +612,7 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (Math.round(130 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
+                    image.animate('left', (Math.round(165 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
