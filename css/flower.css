@@ -178,11 +178,14 @@ body {
     left: 81.1%;
     cursor: pointer;
 }
+.garbage:hover{
+    background: url(../img/btGbOn.png);
 
+}
 /* 鼠標 */
 
 .cursor {
-    background: url(../img/btVOn.png);
+    background: url(../img/btV.svg);
     background-size: cover;
     position: absolute;
     top: 63.9%;
@@ -211,7 +214,10 @@ body {
     left: 92.1%;
     cursor: pointer;
 }
+.close:hover{
+    background: url(../img/btX1.svg);
 
+}
 /* 數量兩字 */
 
 .numberText {
@@ -343,7 +349,7 @@ body {
 }
 
 .yellowchoose .number {
-    color: #FDC333;
+    color: #C6942E;
 }
 
 .greenchoose .number {

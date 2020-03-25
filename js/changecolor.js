@@ -4,6 +4,9 @@ $('.color').click(function () {
     canvas.discardActiveObject();
     canvas.requestRenderAll();
     oncolorpickmode = 1
+    $('.cursor').css({
+        background:"url(../img/btVOn.svg)"
+    })
     PickColor = $(this).data("color")
     console.log(PickColor)
     $('*').addClass("cursor2")
@@ -14,7 +17,9 @@ $('.cursor').click(function () {
     oncolorpickmode = 0
     $('*').removeClass("cursor2")
     canvas.selection = true;
-
+    $('.cursor').css({
+        background:"url(../img/btV.svg)"
+    })
 })
 canvas.on('mouse:down', e => {
     // console.log(e)

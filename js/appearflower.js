@@ -38,6 +38,7 @@ function idontknowwhatiwrite() {
 
     } else {
         temporary_storage = $('.count').val()
+        canvas.clear();
 
     }
     if (temporary_storage > 40) {
