@@ -176,6 +176,12 @@ var bluelittlemove = 0
 var yellowlittlemove = 0
 var greenlittlemove = 0
 
+
+var numnum = 0
+var numnum1 = 0
+var numnum2 = 0
+var numnum3 = 0
+var numnum4 = 0
 function SumData(arr) {
     var sum = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -183,12 +189,6 @@ function SumData(arr) {
     };
     return sum;
 }
-
-var numnum = 0
-var numnum1 = 0
-var numnum2 = 0
-var numnum3 = 0
-var numnum4 = 0
 
 $('body').keydown(function (event) {
     if (event.which == 13 && $('.count').is(":focus")) {

@@ -5,7 +5,7 @@ $('.color').click(function () {
     canvas.requestRenderAll();
     oncolorpickmode = 1
     $('.cursor').css({
-        background:"url(../img/btVOn.svg)"
+        background:"url(img/btVOn.svg)"
     })
     PickColor = $(this).data("color")
     console.log(PickColor)
@@ -18,7 +18,7 @@ $('.cursor').click(function () {
     $('*').removeClass("cursor2")
     canvas.selection = true;
     $('.cursor').css({
-        background:"url(../img/btV.svg)"
+        background:"url(img/btV.svg)"
     })
 })
 canvas.on('mouse:down', e => {
@@ -178,3 +178,58 @@ canvas.on('object:rotating', function (e) {
 
     }
 });
+
+
+canvas.on('object:moved', function (e) {
+    if (e.e.clientY > $('.canvas-container').height() + $('.canvas-container').offset().top + 30 * sRout) {
+       
+        var obj = e.target;
+        var obkkk = obj._objects ? obj._objects : e.target
+        obj.setCoords();
+    
+        // if ((obj.getBoundingRect().left + obj.getBoundingRect().width/2) > obj.canvas.width * 0.80 && obj.getBoundingRect().top + obj.getBoundingRect().height < obj.canvas.height * 0.65) {
+    
+        if (obkkk == e.target) {
+            canvas.remove(obkkk)
+        }
+        
+        if (obkkk == obj._objects) {
+            obkkk.forEach(function (object, key) {
+                canvas.remove(object);
+            });
+            canvas.discardActiveObject()
+    
+        }
+    
+        // function getSelection() {
+            
+        //     return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
+        // }
+    
+        // var ko = new Array()
+        // var o = getSelection();
+        
+        // o._objects.forEach(function (object, key) {
+        //     canvas.remove(object);
+        // });
+        // canvas.discardActiveObject()
+    
+    
+        canvas.renderAll();
+        
+        setTimeout(function ww() {
+            var items = canvas.getObjects()
+            var Array_sum
+            var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+    
+            for (i = 0; i < items.length; i++) {
+                ArrTest[i] = parseInt(items[i]._element.alt)
+    
+            }
+            Array_sum = SumData(ArrTest)
+            $(".count").val(Array_sum)
+            countRemove()
+
+        }, 500)
+    }
+})
