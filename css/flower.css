@@ -180,6 +180,7 @@ body {
 }
 .garbage:hover{
     background: url(../img/btGbOn.png);
+    background-size: cover;
 
 }
 /* 鼠標 */

@@ -164,10 +164,11 @@ $('body').bind('touchstart', function (event) {
 // 點擊產生花片欄位----------------------------
 
 
-
 var canvas = new fabric.Canvas('canvas');
 canvas.setHeight(500);
 canvas.setWidth(500);
+
+
 const imgset = document.querySelector('.background')
 const defaultImg = document.querySelector('.defaultImg')
 let movingImage
@@ -181,7 +182,6 @@ var oldimgX = ''
 var oldimgY = ''
 
 function saveImg(e) {
-    console.log(e.target.src)
 
     if (e.target.tagName.toLowerCase() === 'img') {
         movingSrc = e.target.src
@@ -219,7 +219,7 @@ function saveFoneImg(e) {
 
 
     copyObj.style.top = e.targetTouches[0].clientY - e.target.height / 2 + "px"
-    copyObj.style.left = e.targetTouches[0].clientX - e.target.width / 2 - spcial_move + "px"
+    copyObj.style.left = e.targetTouches[0].clientX - e.target.width / 2 + "px"
     jijo = copyObj
     canvas.discardActiveObject();
     canvas.renderAll();
@@ -230,11 +230,9 @@ function drag(e) {
 
 
     e.preventDefault();
-    console.log(e)
-    jijo.style.transition = "none"
 
     jijo.style.top = e.targetTouches[0].clientY - e.target.height / 2 + "px"
-    jijo.style.left = e.targetTouches[0].clientX - e.target.width / 2 - spcial_move + "px"
+    jijo.style.left = e.targetTouches[0].clientX - e.target.width / 2 + "px"
 
     odX = e.targetTouches[0].clientX - e.target.width / 2
     odY = e.targetTouches[0].clientY - e.target.height / 2
@@ -243,48 +241,99 @@ var push = false
 var image_q = new Array()
 
 function pushimg(e) {
-    let yoyo = $('.canvas_wrapper').offset().left
-    let yoyot = $('.canvas_wrapper').offset().top
+    // let yoyo = $('.canvas-container').offset().left
+    // let yoyot = $('.canvas-container').offset().top
 
-    let offsetY = odY
-    let offsetX = odX
+    // let offsetY = odY
+    // let offsetX = odX
     document.body.removeChild(jijo);
-    console.log(spcial_move)
-    let h
-    if (e.changedTouches[0].clientY - yoyot - e.target.height / 2 < 0) {
-        h = 35
-    } else if ((e.changedTouches[0].clientY - yoyot - e.target.height / 2 + e.target.height) > ($('.canvas_wrapper').height())) {
-        h = $('.canvas_wrapper').height() - e.target.height - 20
-    } else {
-        h = e.changedTouches[0].clientY - yoyot - e.target.height / 2
+    // let h
+    // if (e.changedTouches[0].clientY - yoyot - e.target.height / 2 < 0) {
+    //     h = 35
+    // } else if ((e.changedTouches[0].clientY - yoyot - e.target.height / 2 + e.target.height) > ($('.canvas_wrapper').height())) {
+    //     h = $('.canvas_wrapper').height() - e.target.height - 20
+    // } else {
+    //     h = e.changedTouches[0].clientY - yoyot - e.target.height / 2
+    // }
+    // let w
+    // if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 < 0) {
+    //     w = 0
+    // }
+    // else if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 + e.target.width > ($('.canvas_wrapper').width())) {
+    //     w = $('.canvas_wrapper').width() * 999 + e.target.width / 2
+    // }
+    // else {
+    //     w = e.changedTouches[0].clientX - yoyo - e.target.width
+    // }
+
+    // const { offsetX, offsetY } = e.e
+
+
+    // cursor_padding
+    // obj_padding
+    var oriTop = e.changedTouches[0].clientY - e.target.height
+    var oriLeft = e.changedTouches[0].clientX - e.target.width
+    // if()
+    var mix_padding = (obj_padding) + (cursor_padding / 2)
+    // var mix_padding = 0
+
+
+    if (oriTop - mix_padding < 0) {
+        oriTop = mix_padding
     }
-    let w
-    if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 < 0) {
-        w = 0
+    if (oriLeft < 0) {
+        oriLeft = 0
     }
-    else if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 + e.target.width > ($('.canvas_wrapper').width())) {
-        w = $('.canvas_wrapper').width() * 999 + e.target.width / 2
+    if (oriTop + movingImage.height > $('.canvas-container').height()) {
+        oriTop = $('.canvas-container').height() - movingImage.height
     }
-    else {
-        w = e.changedTouches[0].clientX - yoyo - e.target.width
+    if (oriLeft + movingImage.width + mix_padding > $('.canvas-container').width()) {
+        oriLeft = $('.canvas-container').width() - movingImage.width - mix_padding
     }
+
+
+
+
+
+
+
+
     const image_qq = new fabric.Image(movingImage, {
         width: movingImage.naturalWidth,
         height: movingImage.naturalHeight,
         scaleX: movingImage.width / movingImage.naturalWidth,
         scaleY: movingImage.height / movingImage.naturalHeight,
-        top: h,
-        left: w + movingImage.naturalWidth / 4,
+        top: oriTop,
+        left: oriLeft,
         lockScalingFlip: true
     })
 
 
     image_qq.set({
-        borderColor: 'rgba(0,0,0,0)'
+        borderColor: '#01B0F1'
     })
+
     canvas.add(image_qq)
 
     image_q.push(image_qq)
+    movingImage = ""
+    setTimeout(function ww() {
+        var items = canvas.getObjects()
+        var Array_sum
+        var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+        for (i = 0; i < items.length; i++) {
+            ArrTest[i] = parseInt(items[i]._element.alt)
+
+        }
+        Array_sum = SumData(ArrTest)
+        $(".count").val(Array_sum)
+        
+        countRemove()
+
+    }, 500)
+
+
 }
 
 
@@ -294,25 +343,24 @@ function dropImg(e) {
     const { offsetX, offsetY } = e.e
 
 
+    // cursor_padding
+    // obj_padding
 
     var oriTop = offsetY - imgDragOffset.offsetY
     var oriLeft = offsetX - imgDragOffset.offsetX
     // if()
     var mix_padding = (obj_padding) + (cursor_padding / 2)
-    console.log($('.canvas-container').position().top)
-    console.log($('.canvas-container').position().left)
-    console.log($('.canvas-container').width())
-    console.log($('.canvas-container').height())
-    console.log($('.canvas-container').position().top + $('.canvas-container').height())
-    console.log(oriTop + movingImage.height)
-    if (oriTop - mix_padding < $('.canvas-container').position().top) {
+    // var mix_padding = 0
+
+
+    if (oriTop - mix_padding < 0) {
         oriTop = mix_padding
     }
-    if (oriLeft - mix_padding < $('.canvas-container').position().left) {
-        oriLeft = mix_padding
+    if (oriLeft < 0) {
+        oriLeft = 0
     }
-    if (oriTop + movingImage.height + mix_padding > $('.canvas-container').height()) {
-        oriTop = $('.canvas-container').height() - movingImage.height - mix_padding
+    if (oriTop + movingImage.height > $('.canvas-container').height()) {
+        oriTop = $('.canvas-container').height() - movingImage.height
     }
     if (oriLeft + movingImage.width + mix_padding > $('.canvas-container').width()) {
         oriLeft = $('.canvas-container').width() - movingImage.width - mix_padding
@@ -342,13 +390,12 @@ function dropImg(e) {
 
         for (i = 0; i < items.length; i++) {
             ArrTest[i] = parseInt(items[i]._element.alt)
-            console.log(items[i]._element.alt)
 
         }
-        console.log(SumData(ArrTest))
         Array_sum = SumData(ArrTest)
         $(".count").val(Array_sum)
         countRemove()
+
     }, 500)
 }
 
@@ -366,7 +413,6 @@ $('.defaultImg').mousedown(function () {
 imgset.addEventListener('touchstart', saveFoneImg)
 imgset.addEventListener("touchmove", drag);
 imgset.addEventListener("touchend", pushimg);
-
 
 
 
@@ -391,10 +437,10 @@ fabric.Canvas.prototype.customiseControls({
                 canvas.remove(ji)
                 return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
             }
-         
+
 
             var o = getSelection();
-            
+
             o._objects.forEach(function (object, key) {
                 canvas.remove(object);
             });
