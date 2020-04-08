@@ -222,28 +222,29 @@ function idontknowwhatiwrite() {
 
                 if (arr_one.length <= 5) {
 
-                    s_1 += 10
+                    s_1 += 200
 
 
                     image.animate('top', 30 * sRout + 120 * sRout * numnum, {
-                        duration: 800 + s_1,
+                        duration: 100 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
                     console.log(qq + "ewqeqe")
                     image.animate('left', (45 * sRout) + (maxWidthRed * qq) / 2 + (redlittlemove * sRout), {
-                        duration: 800 + s_1,
+                        duration: 100 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
                 } else if (arr_one.length > 5 && arr_one.length <= 10) {
-                    s_1_1 += 10
+                    s_1 += 400
+
 
 
                     image.animate('top', 30 * sRout + 120 * sRout * (numnum - 5), {
-                        duration: 800 + s_1,
+                        duration: 100 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
@@ -251,7 +252,7 @@ function idontknowwhatiwrite() {
                     console.log(redcount2 + 'ejiejeje')
 
                     image.animate('left', (45 * sRout) + (maxWidthRed * redcount2) / 2 + (redlittlemove * sRout), {
-                        duration: 800 + s_1,
+                        duration: 300 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
@@ -266,22 +267,7 @@ function idontknowwhatiwrite() {
         }
 
 
-        setTimeout(function ww() {
-            var items = canvas.getObjects()
-            var Array_sum
-            var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
-
-            for (i = 0; i < items.length; i++) {
-                ArrTest[i] = parseInt(items[i]._element.alt)
-                console.log(items[i]._element.alt)
-
-            }
-            console.log(SumData(ArrTest))
-            Array_sum = SumData(ArrTest)
-            $(".count").val(Array_sum)
-            countRemove()
-        }, 1500)
-
+  
 
 
     }
@@ -764,6 +750,6 @@ $('.enter').click(function () {
 
     idontknowwhatiwrite()
     // redlittlemove += 10
-    
+ 
 
 })
