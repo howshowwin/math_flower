@@ -57,6 +57,7 @@ function convertSizeALL(className) {
     $('.choose_area').css({ width: Math.round(127 * sRatio), height: Math.round(453 * sRatio) });
     $('.number').css({ width: Math.round(106 * sRatio), height: Math.round(43 * sRatio), fontSize: Math.round(35 * sRatio), paddingLeft: Math.round(11 * sRatio) });
     $('.enter_input').css({ width: Math.round(70 * sRatio), height: Math.round(30 * sRatio), fontSize: Math.round(36 * sRatio) })
+    $('.display_btn').css({ width: Math.round(158 * sRatio), height: Math.round(52 * sRatio) });
     sRout = sRatio
     canvas.setHeight(665 * sRatio);
     canvas.setWidth(1415 * sRatio);
@@ -64,27 +65,27 @@ function convertSizeALL(className) {
     canvas.discardActiveObject();
 
 
-  var nowW =  $('.img_fR').css('width')
-  console.log(nowW)
-  console.log(change_img)
+    var nowW = $('.img_fR').css('width')
+    console.log(nowW)
+    console.log(change_img)
 
-  var countscale =  parseInt(nowW)/ parseInt(change_img) 
+    var countscale = parseInt(nowW) / parseInt(change_img)
     var objse = canvas.getObjects()
     objse.forEach((obj) => {
-      
+
 
         obj.scaleX = obj.scaleX * countscale
 
         obj.scaleY = obj.scaleY * countscale
         obj.left = obj.left * countscale
-        obj.top = obj.top *countscale
+        obj.top = obj.top * countscale
         obj.setCoords()
         // obj.width=  obj._element.naturalWidth* scalenow
         // obj.height=  obj._element.naturalHeigh* scalenow
 
 
     });
-    change_img =nowW   
+    change_img = nowW
 
 
 
@@ -156,12 +157,16 @@ $(".enter_input").bind('input porpertychange', function () {
         $(this).val("+" + 0)
 
     }
+    $('.enter_input').not(this).val('')
 })
 
 $('.number').click(function () {
     let showClick = $(this).data("count")
     let color = $(this).closest(".choose_area").data("color")
     $(`.enter_${color}`).val(showClick == 10 ? "+10" : `+${showClick}`)
+    clicknum()
+    resetnum()
+
 })
 var red_flower
 var blue_flower
@@ -191,47 +196,324 @@ function SumData(arr) {
 }
 
 $('body').keydown(function (event) {
+    red_flower = $('.enter_red').val().replace(/[^0-9]/ig, "");
+    blue_flower = $('.enter_blue').val().replace(/[^0-9]/ig, "");
+    yellow_flower = $('.enter_yellow').val().replace(/[^0-9]/ig, "");
+    green_flower = $('.enter_green').val().replace(/[^0-9]/ig, "");
+    if (red_flower) {
+        whatnow = "img/fR.svg"
+        whatnownumber = red_flower
+    } else if (blue_flower) {
+        whatnow = "img/fB.svg"
+        whatnownumber = blue_flower
+    } else if (yellow_flower) {
+        whatnow = "img/fY.svg"
+        whatnownumber = yellow_flower
+    } else if (green_flower) {
+        whatnow = "img/fG.svg"
+        whatnownumber = green_flower
+    }
     if (event.which == 13 && $('.count').is(":focus")) {
         canvas.clear();
 
         idontknowwhatiwrite()
+        // redcount =redcount+ counttimes
+        console.log("recountNOW"+redcount)
+
         $('.enter_red').val('')
         $('.enter_blue').val('')
         $('.enter_yellow').val('')
         $('.enter_green').val('')
     }
-    if (event.which == 13 && !$('.count').is(":focus")) {
+    if (event.which == 13 && !$('.count').is(":focus") && whatnownumber != 0 && whatnownumber) {
 
-        red_flower = $('.enter_red').val().replace(/[^0-9]/ig, "");
-        blue_flower = $('.enter_blue').val().replace(/[^0-9]/ig, "");
-        yellow_flower = $('.enter_yellow').val().replace(/[^0-9]/ig, "");
-        green_flower = $('.enter_green').val().replace(/[^0-9]/ig, "");
-        console.log(red_flower)
-        $('.enter_red').val('')
-        $('.enter_blue').val('')
-        $('.enter_yellow').val('')
-        $('.enter_green').val('')
-        // red bbbbbbbbbbbbbbbbbbbbbbbbbbb
-        numnum = -1
-        if (red_flower != "") {
-            redcount += 1
-        }
-        if (redcount > 4.2) {
+
+        clicknummult()
+
+
+
+    }
+});
+// 計算有幾個並且拿第幾個
+
+
+
+
+var whatnow
+var whatnownumber
+var fly
+function clicknum() {
+
+    red_flower = $('.enter_red').val().replace(/[^0-9]/ig, "");
+    blue_flower = $('.enter_blue').val().replace(/[^0-9]/ig, "");
+    yellow_flower = $('.enter_yellow').val().replace(/[^0-9]/ig, "");
+    green_flower = $('.enter_green').val().replace(/[^0-9]/ig, "");
+    if (red_flower) {
+        whatnow = "img/fR.svg"
+        whatnownumber = red_flower
+        fly = 180
+    } else if (blue_flower) {
+        whatnow = "img/fB.svg"
+        whatnownumber = blue_flower
+        fly = 500
+    } else if (yellow_flower) {
+        whatnow = "img/fY.svg"
+        whatnownumber = yellow_flower
+        fly = 700
+    } else if (green_flower) {
+        whatnow = "img/fG.svg"
+        whatnownumber = green_flower
+        fly = 1100
+    }
+    console.log(whatnow)
+
+    $('.enter_red').val('')
+    $('.enter_blue').val('')
+    $('.enter_yellow').val('')
+    $('.enter_green').val('')
+    // red bbbbbbbbbbbbbbbbbbbbbbbbbbb
+    numnum = -1
+    let qq
+    redcount = redcount + 1
+    qq = redcount
+    if (whatnownumber > 5) {
+        redcount2 = redcount + 1
+        redcount = redcount + 1
+        qq = redcount2 - 1
+        if (redcount2 > 9) {
+
             redcount = 0
+            redcount2 = 0
             redlittlemove += 10
         }
+        if (qq > 9) {
+            qq = 0
+            redcount = 1
+            redcount2 = 1
+        }
+
+    } else {
+        redcount2 = redcount
+        if (redcount2 > 9) {
+
+            redcount = 0
+            redcount2 = 0
+            redlittlemove += 10
+        }
+        if (qq > 9) {
+            qq = 0
+            redcount = 0
+            redcount2 = 1
+        }
+
+    }
+
+
+    if (redlittlemove > 30) {
+        redlittlemove = 0
+    }
+    console.log(redcount)
+
+    var arr_one = new Array()
+
+    for (i = 0; i < whatnownumber; i++) {
+        var s_1 = 0
+        var s_1_1 = 0
+        // var w = 0 
+        const imgEl_1 = document.createElement('img')
+        imgEl_1.src = whatnow
+        imgEl_1.alt = '1'
+
+        imgEl_1.onload = (e) => {
+
+
+            const image = new fabric.Image(imgEl_1, {
+                width: e.target.naturalWidth,
+                height: e.target.naturalHeight,
+                scaleX: parseInt($('.defaultImg').width()) / e.target.naturalWidth,
+                scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
+
+                top: 650 * sRout,
+                left: fly * sRout
+            })
+            canvas.add(image)
+
+            image.alt = 1
+            image.set({
+                borderColor: '#01B0F1'
+            })
+
+
+
+            canvas.renderAll();
+
+
+            image._element.alt = '1'
+            arr_one.push(image)
+
+            var maxWidthRed = 265 * sRout
+            numnum++
+            // for (i = 0; i < arr_one.length; i++) {
+
+
+            if (arr_one.length <= 5) {
+
+                s_1 += 10
+
+
+                image.animate('top', 30 * sRout + 120 * sRout * numnum, {
+                    duration: 800 + s_1,
+                    onChange: canvas.renderAll.bind(canvas),
+
+                    easing: fabric.util.ease.easeInOutExpo
+                })
+                console.log(qq + "ewqeqe")
+                image.animate('left', (45 * sRout) + (maxWidthRed * qq) / 2 + (redlittlemove * sRout), {
+                    duration: 800 + s_1,
+                    onChange: canvas.renderAll.bind(canvas),
+
+                    easing: fabric.util.ease.easeInOutExpo
+                })
+            } else if (arr_one.length > 5 && arr_one.length <= 10) {
+                s_1_1 += 10
+
+
+                image.animate('top', 30 * sRout + 120 * sRout * (numnum - 5), {
+                    duration: 800 + s_1,
+                    onChange: canvas.renderAll.bind(canvas),
+
+                    easing: fabric.util.ease.easeInOutExpo
+                })
+                console.log(redcount2 + 'ejiejeje')
+
+                image.animate('left', (45 * sRout) + (maxWidthRed * redcount2) / 2 + (redlittlemove * sRout), {
+                    duration: 800 + s_1,
+                    onChange: canvas.renderAll.bind(canvas),
+
+                    easing: fabric.util.ease.easeInOutExpo
+                })
+
+            }
+            // }
+
+
+
+        }
+    }
+
+
+
+    setTimeout(function ww() {
+        var items = canvas.getObjects()
+        var Array_sum
+        var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+        for (i = 0; i < items.length; i++) {
+            ArrTest[i] = parseInt(items[i]._element.alt)
+            console.log(items[i]._element.alt)
+
+        }
+        console.log(SumData(ArrTest))
+        Array_sum = SumData(ArrTest)
+        $(".count").val(Array_sum)
+        countRemove()
+    }, 500)
+
+
+
+
+}
+function resetnum() {
+    red_flower = ''
+    blue_flower = ''
+    yellow_flower = ''
+    green_flower = ''
+    whatnownumber = ''
+}
+
+function clicknummult() {
+
+    red_flower = $('.enter_red').val().replace(/[^0-9]/ig, "");
+    blue_flower = $('.enter_blue').val().replace(/[^0-9]/ig, "");
+    yellow_flower = $('.enter_yellow').val().replace(/[^0-9]/ig, "");
+    green_flower = $('.enter_green').val().replace(/[^0-9]/ig, "");
+
+
+    if (red_flower) {
+        doit(red_flower, "img/fR.svg", 180)
+    }
+    if (blue_flower) {
+
+        doit(blue_flower, "img/fB.svg", 500)
+    }
+    if (yellow_flower) {
+
+        doit(yellow_flower, "img/fY.svg", 700)
+    }
+    if (green_flower) {
+
+        doit(green_flower, "img/fG.svg", 1100)
+    }
+
+
+    console.log(whatnow)
+
+    $('.enter_red').val('')
+    $('.enter_blue').val('')
+    $('.enter_yellow').val('')
+    $('.enter_green').val('')
+    // red bbbbbbbbbbbbbbbbbbbbbbbbbbb
+    function doit(countnow, srcnow, long) {
+        numnum = -1
+        let qq
+        redcount = redcount + 1
+        qq = redcount
+        if (countnow > 5) {
+            redcount2 = redcount + 1
+            redcount = redcount + 1
+            qq = redcount2 - 1
+            if (redcount2 > 9) {
+
+                redcount = 0
+                redcount2 = 0
+                redlittlemove += 10
+            }
+            if (qq > 9) {
+                qq = 0
+                redcount = 1
+                redcount2 = 1
+            }
+
+        } else {
+            redcount2 = redcount
+            if (redcount2 > 9) {
+
+                redcount = 0
+                redcount2 = 0
+                redlittlemove += 10
+            }
+            if (qq > 9) {
+                qq = 0
+                redcount = 0
+                redcount2 = 1
+            }
+
+        }
+
+
         if (redlittlemove > 30) {
             redlittlemove = 0
         }
         console.log(redcount)
 
         var arr_one = new Array()
-        for (i = 0; i < red_flower; i++) {
+
+        for (i = 0; i < countnow; i++) {
             var s_1 = 0
             var s_1_1 = 0
             // var w = 0 
             const imgEl_1 = document.createElement('img')
-            imgEl_1.src = "img/fR.svg"
+            imgEl_1.src = srcnow
             imgEl_1.alt = '1'
 
             imgEl_1.onload = (e) => {
@@ -244,7 +526,7 @@ $('body').keydown(function (event) {
                     scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
 
                     top: 650 * sRout,
-                    left: 180 * sRout
+                    left: long * sRout
                 })
                 canvas.add(image)
 
@@ -261,12 +543,13 @@ $('body').keydown(function (event) {
                 image._element.alt = '1'
                 arr_one.push(image)
 
-                console.log(arr_one)
                 var maxWidthRed = 265 * sRout
                 numnum++
-                console.log(numnum)
                 // for (i = 0; i < arr_one.length; i++) {
+
+
                 if (arr_one.length <= 5) {
+
                     s_1 += 10
 
 
@@ -276,7 +559,8 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (45 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                    console.log(qq + "ewqeqe")
+                    image.animate('left', (45 * sRout) + (maxWidthRed * qq) / 2 + (redlittlemove * sRout), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -292,7 +576,9 @@ $('body').keydown(function (event) {
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    image.animate('left', (165 * sRout) + (maxWidthRed * redcount) + (redlittlemove * sRout), {
+                    console.log(redcount2 + 'ejiejeje')
+
+                    image.animate('left', (45 * sRout) + (maxWidthRed * redcount2) / 2 + (redlittlemove * sRout), {
                         duration: 800 + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
@@ -306,331 +592,6 @@ $('body').keydown(function (event) {
 
             }
         }
-
-
-        // arr_one = []
-        // $(this).val("")
-
-        // setTimeout(function ww() {
-        //     var items = canvas.getObjects()
-        //     var Array_sum
-        //     var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
-
-        //     for (i = 0; i < items.length; i++) {
-        //         ArrTest[i] = parseInt(items[i]._element.alt)
-        //         console.log(items[i]._element.alt)
-
-        //     }
-        //     console.log(SumData(ArrTest))
-        //     Array_sum = SumData(ArrTest)
-        //     $(".input_1").val(Array_sum)
-        //     console.log($(".input_1").val())
-        // }, 500)
-
-
-        // blue bbbbbbbbbbbbbbbbbbbbbbbbbbbb
-
-        
-        if (blue_flower != "") {
-            bluecount += 1
-        }
-        if (bluecount > 4.3) {
-            bluecount = 0
-            bluelittlemove += 10
-        }
-        if (bluelittlemove > 30) {
-            bluelittlemove = 0
-        }
-        console.log(bluecount+"jiejioeoe")
-        numnum1 = -1
-        var arr_two = new Array()
-        for (i = 0; i < blue_flower; i++) {
-            var s_1 = 0
-            var s_1_1 = 0
-            // var w = 0 
-            const imgEl_1 = document.createElement('img')
-            imgEl_1.src = "img/fB.svg"
-            imgEl_1.alt = '1'
-
-            imgEl_1.onload = (e) => {
-
-
-                const image = new fabric.Image(imgEl_1, {
-                    width: e.target.naturalWidth,
-                    height: e.target.naturalHeight,
-                    scaleX: parseInt($('.defaultImg').width()) / e.target.naturalWidth,
-                    scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
-
-                    top: Math.round(650 * sRout),
-                    left: Math.round(500 * sRout)
-                })
-                canvas.add(image)
-
-                image.alt = 1
-                image.set({
-                    borderColor: '#01B0F1'
-                })
-
-
-
-                canvas.renderAll();
-
-
-                image._element.alt = '1'
-                arr_two.push(image)
-                numnum1++
-                console.log(numnum)
-                // console.log(arr_two)
-                var maxWidthblue = Math.round(265 * sRout)
-                // for (i = 0; i < arr_two.length; i++) {
-                if (arr_two.length <= 5) {
-                    s_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * numnum1, {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(45 * sRout))+(Math.round(10 * sRout)) + (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                } else if (arr_two.length > 5 && arr_two.length <= 10) {
-                    s_1_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * (numnum1 - 5), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(165 * sRout)) +(Math.round(10 * sRout))+ (maxWidthblue * bluecount) + (Math.round(bluelittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-
-                }
-                // }
-
-
-
-            }
-        }
-
-
-
-
-
-
-
-
-
-        // yeloow bbbbbbbbbbbbbbbbbbbbbbbbbbbb
-
-
-
-        if (yellow_flower != "") {
-            yellowcount += 1
-        }
-        if (yellowcount > 4.8) {
-            yellowcount = 0
-            yellowlittlemove += 10
-        }
-        if (yellowlittlemove > 30) {
-            yellowlittlemove = 0
-        }
-        console.log(yellowcount)
-        numnum2 = -1
-        var arr_three = new Array()
-        for (i = 0; i < yellow_flower; i++) {
-            var s_1 = 0
-            var s_1_1 = 0
-            // var w = 0 
-            const imgEl_1 = document.createElement('img')
-            imgEl_1.src = "img/fY.svg"
-            imgEl_1.alt = '1'
-
-            imgEl_1.onload = (e) => {
-
-
-                const image = new fabric.Image(imgEl_1, {
-                    width: e.target.naturalWidth,
-                    height: e.target.naturalHeight,
-                    scaleX: parseInt($('.defaultImg').width()) / e.target.naturalWidth,
-                    scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
-
-                    top: Math.round(650 * sRout),
-                    left: Math.round(780 * sRout)
-                })
-                canvas.add(image)
-
-                image.alt = 1
-                image.set({
-                    borderColor: '#01B0F1'
-                })
-
-
-
-                canvas.renderAll();
-
-
-                image._element.alt = '1'
-                arr_three.push(image)
-                numnum2++
-                console.log(numnum)
-                // console.log(arr_two)
-                var maxWidthyellow = Math.round(265 * sRout)
-                // for (i = 0; i < arr_two.length; i++) {
-                if (arr_three.length <= 5) {
-                    s_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * numnum2, {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(45 * sRout))+(Math.round(20 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                } else if (arr_three.length > 5 && arr_three.length <= 10) {
-                    s_1_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * (numnum2 - 5), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(165 * sRout))+(Math.round(20 * sRout)) + (maxWidthyellow * yellowcount) + (Math.round(yellowlittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-
-                }
-                // }
-
-
-
-            }
-        }
-
-
-        // GREEN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-
-
-
-        if (green_flower != "") {
-            greencount += 1
-        }
-        if (greencount > 4.8) {
-            greencount = 0
-            greenlittlemove += 10
-        }
-        if (greenlittlemove > 30) {
-            greenlittlemove = 0
-        }
-        console.log(greencount)
-        numnum3 = -1
-        var arr_four = new Array()
-        for (i = 0; i < green_flower; i++) {
-            var s_1 = 0
-            var s_1_1 = 0
-            // var w = 0 
-            const imgEl_1 = document.createElement('img')
-            imgEl_1.src = "img/fG.svg"
-            imgEl_1.alt = '1'
-
-            imgEl_1.onload = (e) => {
-
-
-                const image = new fabric.Image(imgEl_1, {
-                    width: e.target.naturalWidth,
-                    height: e.target.naturalHeight,
-                    scaleX: parseInt($('.defaultImg').width()) / e.target.naturalWidth,
-                    scaleY: parseInt($('.defaultImg').height()) / e.target.naturalHeight,
-
-                    top: Math.round(650 * sRout),
-                    left: Math.round(1100 * sRout)
-                })
-                canvas.add(image)
-
-                image.alt = 1
-                image.set({
-                    borderColor: '#01B0F1'
-                })
-
-
-
-                canvas.renderAll();
-
-
-                image._element.alt = '1'
-                arr_four.push(image)
-                numnum3++
-                console.log(numnum)
-                // console.log(arr_two)
-                var maxWidthgreen = Math.round(265 * sRout)
-                // for (i = 0; i < arr_two.length; i++) {
-                if (arr_four.length <= 5) {
-                    s_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * numnum3, {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(45 * sRout)) +(Math.round(30 * sRout))+ (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                } else if (arr_four.length > 5 && arr_four.length <= 10) {
-                    s_1_1 += 10
-
-
-                    image.animate('top', Math.round(30 * sRout) + Math.round(120 * sRout) * (numnum3 - 5), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-                    image.animate('left', (Math.round(165 * sRout))+(Math.round(30 * sRout)) + (maxWidthgreen * greencount) + (Math.round(greenlittlemove * sRout)), {
-                        duration: 800 + s_1,
-                        onChange: canvas.renderAll.bind(canvas),
-
-                        easing: fabric.util.ease.easeInOutExpo
-                    })
-
-                }
-                // }
-
-
-
-            }
-        }
-
-
-
-
-
 
 
 
@@ -652,8 +613,7 @@ $('body').keydown(function (event) {
 
 
 
-
-
     }
-});
-// 計算有幾個並且拿第幾個
+
+
+}

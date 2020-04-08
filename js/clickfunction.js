@@ -2,6 +2,25 @@ var red
 var blue
 var yellow
 var green
+var display_count = 0
+$('.display_btn').click(function(){
+    if(display_count==0){
+        $('.count').removeClass('display_none')
+        $(this).css({
+            background:"url(img/btN2.png)",
+            backgroundSize: "cover"
+        })
+        display_count =1
+    }else if(display_count == 1){
+        $('.count').addClass('display_none')
+        $(this).css({
+            background:"url(img/btN1.png)",
+            backgroundSize: "cover"
+        })
+        display_count =0
+
+    }
+})
 
 $('.redbtn').click(function () {
 

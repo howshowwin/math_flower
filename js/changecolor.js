@@ -1,26 +1,53 @@
 var PickColor
+var changeCur
 var oncolorpickmode = 0
 $('.color').click(function () {
     canvas.discardActiveObject();
     canvas.requestRenderAll();
     oncolorpickmode = 1
+    $('*').removeClass(`cursor${changeCur}`)
+  
+    PickColor = $(this).data("color")
+    changeCur = PickColor.replace('.svg','')
+    changeCur = changeCur.replace('f','')
+    console.log(changeCur)
     $('.cursor').css({
         background:"url(img/btVOn.svg)",
         backgroundSize: "cover"
     })
-    PickColor = $(this).data("color")
-    console.log(PickColor)
-    $('*').addClass("cursor2")
+    $('*').addClass(`cursor${changeCur}`)
     canvas.selection = false;
+    fabric.Object.prototype.setControlsVisibility({
+        bl: false, // 左下
+        br: false, // 右下
+        mb: false, // 下中
+        ml: false, // 中左
+        mr: false, // 中右
+        mt: false, // 上中
+        tl: false, // 上左
+        tr: false, // 上右
+        mtr: false // 旋轉控制鍵
+    })
 
 })
 $('.cursor').click(function () {
     oncolorpickmode = 0
-    $('*').removeClass("cursor2")
+    $('*').removeClass(`cursor${changeCur}`)
     canvas.selection = true;
     $('.cursor').css({
         background:"url(img/btV.svg)",
         backgroundSize: "cover"
+    })
+    fabric.Object.prototype.setControlsVisibility({
+        bl: true, // 左下
+        br: true, // 右下
+        mb: false, // 下中
+        ml: false, // 中左
+        mr: false, // 中右
+        mt: false, // 上中
+        tl: false, // 上左
+        tr: true, // 上右
+        mtr: false // 旋轉控制鍵
     })
 })
 canvas.on('mouse:down', e => {
@@ -116,7 +143,7 @@ canvas.on('object:moving', function (e) {
         obj.left = Math.max(obj.left, obj.left + (20 * sRout) - obj.getBoundingRect().left);
     }
     // bot-right corner
-    if (obj.getBoundingRect().top + obj.getBoundingRect().height > obj.canvas.height || obj.getBoundingRect().left + obj.getBoundingRect().width > obj.canvas.width) {
+    if ( obj.getBoundingRect().left + obj.getBoundingRect().width > obj.canvas.width) {
         obj.top = Math.min(obj.top, obj.canvas.height - (20 * sRout) - obj.getBoundingRect().height + obj.top - obj.getBoundingRect().top);
         obj.left = Math.min(obj.left, obj.canvas.width - (20 * sRout) - obj.getBoundingRect().width + obj.left - obj.getBoundingRect().left);
     }
@@ -183,7 +210,9 @@ canvas.on('object:rotating', function (e) {
 
 
 canvas.on('object:moved', function (e) {
-    if (e.e.clientY > $('.canvas-container').height() + $('.canvas-container').offset().top + 30 * sRout) {
+    var obj = e.target;
+    
+    if (obj.getBoundingRect().top + obj.getBoundingRect().height  > $('.canvas-container').height() + $('.canvas-container').offset().top + 30 * sRout) {
        
         var obj = e.target;
         var obkkk = obj._objects ? obj._objects : e.target

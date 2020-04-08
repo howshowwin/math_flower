@@ -1,17 +1,64 @@
 * {
     margin: 0;
     padding: 0;
-    
 }
-.cursor2{
-        cursor: url("../img/ms.cur") 0 60 ,auto !important
+
+.cursorB {
+    cursor: url("../img/msB.cur") 0 60, auto !important
 }
+
+.cursorBrown {
+    cursor: url("../img/msBrown.cur") 0 60, auto !important
+}
+
+.cursorG {
+    cursor: url("../img/msG.cur") 0 60, auto !important
+}
+
+.cursorLB {
+    cursor: url("../img/msLb.cur") 0 60, auto !important
+}
+
+.cursorLG {
+    cursor: url("../img/msLG.cur") 0 60, auto !important
+}
+
+.cursorLP {
+    cursor: url("../img/msLP.cur") 0 60, auto !important
+}
+
+.cursorO {
+    cursor: url("../img/msO.cur") 0 60, auto !important
+}
+
+.cursorP {
+    cursor: url("../img/msP.cur") 0 60, auto !important
+}
+
+.cursorPink {
+    cursor: url("../img/msPink.cur") 0 60, auto !important
+}
+
+.cursorR {
+    cursor: url("../img/msR.cur") 0 60, auto !important
+}
+
+.cursorW {
+    cursor: url("../img/msW.cur") 0 60, auto !important
+}
+
+.cursorY {
+    cursor: url("../img/msY.cur") 0 60, auto !important
+}
+
 body {
     position: relative;
 }
-.display_none{
+
+.display_none {
     display: none;
 }
+
 .background1 {
     background: url(../img/index1.png);
     background-size: cover;
@@ -36,7 +83,14 @@ body {
 .color {
     cursor: pointer;
 }
-
+.display_btn{
+    background: url(../img/btN1.png);
+    background-size: cover;
+    position: absolute;
+    top: 7%;
+    left: 80.7%;
+    cursor: pointer;
+}
 .color_1 {
     background: url(../img/c1.png);
     background-size: cover;
@@ -178,11 +232,12 @@ body {
     left: 81.1%;
     cursor: pointer;
 }
-.garbage:hover{
+
+.garbage:hover {
     background: url(../img/btGbOn.png);
     background-size: cover;
-
 }
+
 /* 鼠標 */
 
 .cursor {
@@ -215,10 +270,11 @@ body {
     left: 92.1%;
     cursor: pointer;
 }
-.close:hover{
-    background: url(../img/btX1.svg);
 
+.close:hover {
+    background: url(../img/btX1.svg);
 }
+
 /* 數量兩字 */
 
 .numberText {
@@ -374,6 +430,7 @@ body {
     border: 0px;
     color: #ED5358;
 }
+
 .enter_blue {
     font-family: "微軟正黑體";
     position: absolute;
@@ -384,8 +441,8 @@ body {
     outline: none;
     border: 0px;
     color: #0071C0;
-
 }
+
 .enter_yellow {
     font-family: "微軟正黑體";
     position: absolute;
@@ -397,6 +454,7 @@ body {
     border: 0px;
     color: #C6942E;
 }
+
 .enter_green {
     font-family: "微軟正黑體";
     position: absolute;
@@ -407,14 +465,15 @@ body {
     outline: none;
     border: 0px;
     color: #00AF50;
-
 }
-.enter_input{
-    text-align:right;
+
+.enter_input {
+    text-align: right;
 }
 
 /* canvas */
-.canvas-container{
+
+.canvas-container {
     position: absolute;
     top: 3.6%;
     left: 2.4%;
