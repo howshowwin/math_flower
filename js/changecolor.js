@@ -125,7 +125,6 @@ $('.close').click(function () {
 
 canvas.on('object:moving', function (e) {
     var obj = e.target;
-    console.log(e)
     // if object is too big ignore
     if (obj.currentHeight > obj.canvas.height || obj.currentWidth > obj.canvas.width) {
         return;
@@ -155,14 +154,12 @@ var width1 = 0;
 var height1 = 0;
 var angle = 0
 canvas.on('object:scaling', function (e) {
+    console.log(objscalerotate == e.target.cacheKey)
 
     var obj = e.target;
-    // obj.set('strokeWidth', 50)
 
     obj.setCoords();
     var brNew = obj.getBoundingRect();
-    // console.log(e.target.cacheKey)
-    // console.log(objseleted)
 
     if (((brNew.width + brNew.left) >= obj.canvas.width - (20 * sRout)) || ((brNew.height + brNew.top) >= obj.canvas.height - (20 * sRout)) || ((brNew.left < (20 * sRout)) || (brNew.top < (20 * sRout)))) {
         obj.left = left1;
@@ -180,6 +177,7 @@ canvas.on('object:scaling', function (e) {
         width1 = obj.width;
         height1 = obj.height;
     }
+
 });
 canvas.on('object:rotating', function (e) {
     var obj = e.target;
@@ -211,7 +209,7 @@ canvas.on('object:rotating', function (e) {
 canvas.on('object:moved', function (e) {
     var obj = e.target;
 
-    if (obj.getBoundingRect().top + obj.getBoundingRect().height > $('.canvas-container').height() + $('.canvas-container').offset().top + 30 * sRout ) {
+    if (obj.getBoundingRect().top + obj.getBoundingRect().height > $('.canvas-container').height() + $('.canvas-container').offset().top + 30 * sRout) {
 
         var obj = e.target;
         var obkkk = obj._objects ? obj._objects : e.target

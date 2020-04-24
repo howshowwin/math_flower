@@ -412,26 +412,12 @@ fabric.Canvas.prototype.customiseControls({
         action: function (e) {
 
 
-
-
             var ji = canvas.getActiveObject()
             console.log(ji)
             console.log(objseleted)
             if (ji.cacheKey == objseleted) {
                 if (ji) {
-                    // var index = changeArray.indexOf(ji);
-                    // if (index > -1) {
-                    //     console.log(index)
 
-                    //     changeArray.splice(index, 1);
-                    //     var stage = new Array()
-                    //     for (i = 0; i < changeArray.length; i++) {
-                    //         stage.push(parseInt(changeArray[i]._element.alt))
-                    //     }
-
-                    //     change_Array_sum = SumData(stage)
-
-                    // }
                     canvas.remove(ji)
                 }
             }
@@ -444,19 +430,7 @@ fabric.Canvas.prototype.customiseControls({
                 var o = getSelection();
 
                 o._objects.forEach(function (object, key) {
-                    // var index = changeArray.indexOf(object);
-                    // if (index > -1) {
-                    //     console.log(index)
 
-                    //     changeArray.splice(index, 1);
-                    //     var stage = new Array()
-                    //     for (i = 0; i < changeArray.length; i++) {
-                    //         stage.push(parseInt(changeArray[i]._element.alt))
-                    //     }
-
-                    //     change_Array_sum = SumData(stage)
-
-                    // }
                     canvas.remove(object);
                 });
                 canvas.discardActiveObject()
@@ -479,22 +453,6 @@ fabric.Canvas.prototype.customiseControls({
                 Array_sum = SumData(ArrTest)
                 $(".count").val(Array_sum)
             }, 500)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -541,6 +499,24 @@ fabric.Canvas.prototype.customiseControls({
     canvas.renderAll()
 })
 
+fabric.Canvas.prototype.customiseControls({
+    bl: {
+        action: function () {
+
+        },
+        cursor: 'pointer'
+
+    },
+    br: {
+        action: function () {
+
+        },
+        cursor: 'pointer'
+    },
+}, function () {
+
+    canvas.renderAll()
+})
 
 fabric.Object.prototype.setControlsVisibility({
     bl: true, // 左下
@@ -561,14 +537,132 @@ fabric.Canvas.prototype.cursorMap[5] = 'pointer'
 
 var objseleted
 var kok = false
-canvas.on('selection:updated', function (e) {
+var objscalerotate
 
+canvas.on('selection:updated', function (e) {
+    fabric.Canvas.prototype.customiseControls({
+        bl: {
+            action: function () {
+
+            },
+            cursor: 'pointer'
+
+        },
+        br: {
+            action: function () {
+
+            },
+            cursor: 'pointer'
+        },
+    }, function () {
+
+        canvas.renderAll()
+    })
 
     setTimeout(function () {
         objseleted = e.target.cacheKey
         console.log(objseleted)
     }, 120)
+    setTimeout(function () {
+        objscalerotate = e.target.cacheKey
+        console.log(objseleted)
+        fabric.Canvas.prototype.customiseControls({
+            tl: {
+                action: function () {
 
+                }
+            },
+            tr: {
+                action: function (e) {
+
+
+                    var ji = canvas.getActiveObject()
+                    console.log(ji)
+                    console.log(objseleted)
+                    if (ji.cacheKey == objseleted) {
+                        if (ji) {
+
+                            canvas.remove(ji)
+                        }
+                    }
+                    if (ji._objects) {
+                        function getSelection() {
+
+                            return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
+                        }
+
+                        var o = getSelection();
+
+                        o._objects.forEach(function (object, key) {
+
+                            canvas.remove(object);
+                        });
+                        canvas.discardActiveObject()
+
+                    }
+
+
+
+                    canvas.renderAll();
+
+                    setTimeout(function ww() {
+                        var items = canvas.getObjects()
+                        var Array_sum
+                        var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                        for (i = 0; i < items.length; i++) {
+                            ArrTest[i] = parseInt(items[i]._element.alt)
+
+                        }
+                        Array_sum = SumData(ArrTest)
+                        $(".count").val(Array_sum)
+                    }, 500)
+
+
+
+
+                },
+                cursor: 'pointer'
+            },
+            bl: {
+                action: 'rotate',
+                cursor: 'pointer'
+
+            },
+            br: {
+                action: "scale",
+                cursor: 'pointer'
+            },
+            mb: {
+                action: function () {
+
+                }
+            },
+            mt: {
+                action: function () {
+
+                }
+            },
+            ml: {
+                action: function () {
+
+                }
+            },
+            mr: {
+                action: function () {
+
+                }
+            },
+            mtr: {
+                action: function () {
+
+                }
+            },
+        }, function () {
+
+            canvas.renderAll()
+        })
+    }, 500)
 });
 
 
@@ -577,9 +671,25 @@ canvas.on('selection:updated', function (e) {
 
 
 
-
 canvas.on('object:selected', e => {
+    fabric.Canvas.prototype.customiseControls({
+        bl: {
+            action: function () {
 
+            },
+            cursor: 'pointer'
+
+        },
+        br: {
+            action: function () {
+
+            },
+            cursor: 'pointer'
+        },
+    }, function () {
+
+        canvas.renderAll()
+    })
 
     if (e.target) {
 
@@ -589,6 +699,106 @@ canvas.on('object:selected', e => {
             objseleted = e.target.cacheKey
             console.log(objseleted)
         }, 120)
+        setTimeout(function () {
+            objscalerotate = e.target.cacheKey
+            console.log(objseleted)
+            fabric.Canvas.prototype.customiseControls({
+                tl: {
+                    action: function () {
+
+                    }
+                },
+                tr: {
+                    action: function (e) {
+
+
+                        var ji = canvas.getActiveObject()
+                        console.log(ji)
+                        console.log(objseleted)
+                        if (ji.cacheKey == objseleted) {
+                            if (ji) {
+
+                                canvas.remove(ji)
+                            }
+                        }
+                        if (ji._objects) {
+                            function getSelection() {
+
+                                return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
+                            }
+
+                            var o = getSelection();
+
+                            o._objects.forEach(function (object, key) {
+
+                                canvas.remove(object);
+                            });
+                            canvas.discardActiveObject()
+
+                        }
+
+
+
+                        canvas.renderAll();
+
+                        setTimeout(function ww() {
+                            var items = canvas.getObjects()
+                            var Array_sum
+                            var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+                            for (i = 0; i < items.length; i++) {
+                                ArrTest[i] = parseInt(items[i]._element.alt)
+
+                            }
+                            Array_sum = SumData(ArrTest)
+                            $(".count").val(Array_sum)
+                        }, 500)
+
+
+
+
+                    },
+                    cursor: 'pointer'
+                },
+                bl: {
+                    action: 'rotate',
+                    cursor: 'pointer'
+
+                },
+                br: {
+                    action: "scale",
+                    cursor: 'pointer'
+                },
+                mb: {
+                    action: function () {
+
+                    }
+                },
+                mt: {
+                    action: function () {
+
+                    }
+                },
+                ml: {
+                    action: function () {
+
+                    }
+                },
+                mr: {
+                    action: function () {
+
+                    }
+                },
+                mtr: {
+                    action: function () {
+
+                    }
+                },
+            }, function () {
+
+                canvas.renderAll()
+            })
+        }, 500)
     }
 
 
