@@ -22,11 +22,11 @@ function countRemove() {
     var pRatio = window.devicePixelRatio || 0, xRatio = iw / w, yRatio = ih / h, sRatio = 1;
     sRatio = Math.min(xRatio, yRatio);
     if ($('.count').val() >= 10 && $('.count').val() < 100) {
-        $('.count').css({ width: Math.round(300 * sRatio), height: Math.round(200 * sRatio), fontSize: Math.round(200 * sRatio), left: "82%" });
+        $('.count').css({ width: Math.round(250 * sRatio), height: Math.round(250 * sRatio), fontSize: Math.round(200 * sRatio), left: "82%" });
     } else if ($('.count').val() >= 100) {
-        $('.count').css({ width: Math.round(300 * sRatio), height: Math.round(200 * sRatio), fontSize: Math.round(140 * sRatio), top: "12.5%", left: "82%" });
+        $('.count').css({ width: Math.round(250 * sRatio), height: Math.round(250 * sRatio), fontSize: Math.round(140 * sRatio), top: "12.5%", left: "82%" });
     } else {
-        $('.count').css({ width: Math.round(200 * sRatio), height: Math.round(200 * sRatio), fontSize: Math.round(200 * sRatio), left: "85%" });
+        $('.count').css({ width: Math.round(200 * sRatio), height: Math.round(250 * sRatio), fontSize: Math.round(200 * sRatio), left: "85%" });
     }
     $('.count').css({lineHeight: 0})
 }
