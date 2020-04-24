@@ -83,6 +83,42 @@ body {
 .color {
     cursor: pointer;
 }
+.color_1:hover{
+    filter: drop-shadow(0 0 0.4rem crimson);
+}
+.color_2:hover{
+    filter: drop-shadow(0 0 0.4rem #FF935A);
+}
+.color_3:hover{
+    filter: drop-shadow(0 0 0.4rem #FDC333);
+}
+.color_4:hover{
+    filter: drop-shadow(0 0 0.4rem #00AF50);
+}
+.color_5:hover{
+    filter: drop-shadow(0 0 0.4rem #0071C1);
+}
+.color_6:hover{
+    filter: drop-shadow(0 0 0.4rem #9369AB);
+}
+.color_7:hover{
+    filter: drop-shadow(0 0 0.4rem #EA8BAB);
+}
+.color_8:hover{
+    filter: drop-shadow(0 0 0.4rem #FFCCB1);
+}
+.color_9:hover{
+    filter: drop-shadow(0 0 0.4rem #AA8D81);
+}
+.color_10:hover{
+    filter: drop-shadow(0 0 0.4rem #92D14F);
+}
+.color_11:hover{
+    filter: drop-shadow(0 0 0.4rem #01B0F1);
+}
+.color_12:hover{
+    filter: drop-shadow(0 0 0.4rem #C7B9E1);
+}
 .display_btn{
     background: url(../img/btN1.png);
     background-size: cover;
@@ -273,6 +309,8 @@ body {
 
 .close:hover {
     background: url(../img/btX1.svg);
+    background-size: cover;
+
 }
 
 /* 數量兩字 */

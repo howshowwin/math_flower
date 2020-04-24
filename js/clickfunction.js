@@ -3,21 +3,21 @@ var blue
 var yellow
 var green
 var display_count = 0
-$('.display_btn').click(function(){
-    if(display_count==0){
+$('.display_btn').click(function () {
+    if (display_count == 0) {
         $('.count').removeClass('display_none')
         $(this).css({
-            background:"url(img/btN2.png)",
+            background: "url(img/btN2.png)",
             backgroundSize: "cover"
         })
-        display_count =1
-    }else if(display_count == 1){
+        display_count = 1
+    } else if (display_count == 1) {
         $('.count').addClass('display_none')
         $(this).css({
-            background:"url(img/btN1.png)",
+            background: "url(img/btN1.png)",
             backgroundSize: "cover"
         })
-        display_count =0
+        display_count = 0
 
     }
 })
@@ -66,112 +66,48 @@ $('.greenbtn').click(function () {
 
 $('body').bind('click', function (event) {
     if (red == 1) {
-        console.log(event)
-        var evt = event.srcElement ? event.srcElement : event.target;
-        var allele = []
-
-        var opop = event.target.classList.length
-
-        for (i = 0; i < opop; i++) {
-            allele.push(event.target.classList[i])
-
-        }
 
 
-        for (i = 0; i < allele.length; i++) {
-            if (allele[i] == "redbtn") return;
-            else {
-
-                $('.choose_area').css({
-                    transform: "scale(0)"
-                })
-            }
-        }
-        red = 0
+        $('.redchoose').css({
+            transform: "scale(0)"
+        })
     }
+    red = 0
+
 });
 
 
 $('body').bind('click', function (event) {
     if (blue == 1) {
-        console.log(event)
-        var evt = event.srcElement ? event.srcElement : event.target;
-        var allele = []
 
-        var opop = event.target.classList.length
-
-        for (i = 0; i < opop; i++) {
-            allele.push(event.target.classList[i])
-
-        }
-
-
-        for (i = 0; i < allele.length; i++) {
-            if (allele[i] == "bluebtn") return;
-            else {
-
-                $('.choose_area').css({
-                    transform: "scale(0)"
-                })
-            }
-        }
-        blue = 0
+        $('.bluechoose').css({
+            transform: "scale(0)"
+        })
     }
+    blue = 0
 });
 
 
 $('body').bind('click', function (event) {
     if (yellow == 1) {
-        console.log(event)
-        var evt = event.srcElement ? event.srcElement : event.target;
-        var allele = []
 
-        var opop = event.target.classList.length
-
-        for (i = 0; i < opop; i++) {
-            allele.push(event.target.classList[i])
-
-        }
-
-
-        for (i = 0; i < allele.length; i++) {
-            if (allele[i] == "yellowbtn") return;
-            else {
-
-                $('.choose_area').css({
-                    transform: "scale(0)"
-                })
-            }
-        }
-        yellow = 0
+        $('.yellowchoose').css({
+            transform: "scale(0)"
+        })
     }
+    yellow = 0
 });
 
 $('body').bind('click', function (event) {
     if (green == 1) {
-        console.log(event)
-        var evt = event.srcElement ? event.srcElement : event.target;
-        var allele = []
-
-        var opop = event.target.classList.length
-
-        for (i = 0; i < opop; i++) {
-            allele.push(event.target.classList[i])
-
-        }
 
 
-        for (i = 0; i < allele.length; i++) {
-            if (allele[i] == "greenbtn") return;
-            else {
-
-                $('.choose_area').css({
-                    transform: "scale(0)"
-                })
-            }
-        }
-        green = 0
+        $('.greenchoose').css({
+            transform: "scale(0)"
+        })
     }
+
+    green = 0
 });
 
 
@@ -206,6 +142,8 @@ function saveImg(e) {
         movingSrc = e.target.src
         imgDragOffset.offsetX = e.clientX - e.target.offsetLeft
         imgDragOffset.offsetY = e.clientY - e.target.offsetTop
+
+
         movingImage = e.target
         oldimgX = movingImage.width / movingImage.naturalWidth
         oldimgY = movingImage.height / movingImage.naturalHeight
@@ -216,6 +154,7 @@ function saveImg(e) {
 }
 var jijo = ''
 function saveFoneImg(e) {
+    movingImage = ''
 
 
     if (e.target.tagName.toLowerCase() === 'img') {
@@ -260,41 +199,14 @@ var push = false
 var image_q = new Array()
 
 function pushimg(e) {
-    // let yoyo = $('.canvas-container').offset().left
-    // let yoyot = $('.canvas-container').offset().top
 
-    // let offsetY = odY
-    // let offsetX = odX
     document.body.removeChild(jijo);
-    // let h
-    // if (e.changedTouches[0].clientY - yoyot - e.target.height / 2 < 0) {
-    //     h = 35
-    // } else if ((e.changedTouches[0].clientY - yoyot - e.target.height / 2 + e.target.height) > ($('.canvas_wrapper').height())) {
-    //     h = $('.canvas_wrapper').height() - e.target.height - 20
-    // } else {
-    //     h = e.changedTouches[0].clientY - yoyot - e.target.height / 2
-    // }
-    // let w
-    // if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 < 0) {
-    //     w = 0
-    // }
-    // else if (e.changedTouches[0].clientX - yoyo - e.target.width / 2 + e.target.width > ($('.canvas_wrapper').width())) {
-    //     w = $('.canvas_wrapper').width() * 999 + e.target.width / 2
-    // }
-    // else {
-    //     w = e.changedTouches[0].clientX - yoyo - e.target.width
-    // }
 
-    // const { offsetX, offsetY } = e.e
-
-
-    // cursor_padding
-    // obj_padding
     var oriTop = e.changedTouches[0].clientY - e.target.height
     var oriLeft = e.changedTouches[0].clientX - e.target.width
-    // if()
+
     var mix_padding = (obj_padding) + (cursor_padding / 2)
-    // var mix_padding = 0
+
 
 
     if (oriTop - mix_padding < 0) {
@@ -304,10 +216,10 @@ function pushimg(e) {
         oriLeft = 0
     }
     if (oriTop + movingImage.height > $('.canvas-container').height()) {
-        oriTop = $('.canvas-container').height() - movingImage.height
+        movingImage = ''
     }
     if (oriLeft + movingImage.width + mix_padding > $('.canvas-container').width()) {
-        oriLeft = $('.canvas-container').width() - movingImage.width - mix_padding
+        movingImage = ''
     }
 
 
@@ -315,39 +227,41 @@ function pushimg(e) {
 
 
 
+    if (movingImage != '') {
+        const image_qq = new fabric.Image(movingImage, {
+            width: movingImage.naturalWidth,
+            height: movingImage.naturalHeight,
+            scaleX: movingImage.width / movingImage.naturalWidth,
+            scaleY: movingImage.height / movingImage.naturalHeight,
+            top: oriTop,
+            left: oriLeft,
+            lockScalingFlip: true
+        })
 
 
-    const image_qq = new fabric.Image(movingImage, {
-        width: movingImage.naturalWidth,
-        height: movingImage.naturalHeight,
-        scaleX: movingImage.width / movingImage.naturalWidth,
-        scaleY: movingImage.height / movingImage.naturalHeight,
-        top: oriTop,
-        left: oriLeft,
-        lockScalingFlip: true
-    })
+        image_qq.set({
+            borderColor: '#01B0F1'
+        })
+
+        canvas.add(image_qq)
+
+        image_q.push(image_qq)
+        movingImage = ""
+    }
 
 
-    image_qq.set({
-        borderColor: '#01B0F1'
-    })
-
-    canvas.add(image_qq)
-
-    image_q.push(image_qq)
-    movingImage = ""
     setTimeout(function ww() {
         var items = canvas.getObjects()
         var Array_sum
         var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
-
+        console.log(items)
         for (i = 0; i < items.length; i++) {
             ArrTest[i] = parseInt(items[i]._element.alt)
 
         }
         Array_sum = SumData(ArrTest)
         $(".count").val(Array_sum)
-        
+
         countRemove()
 
     }, 500)
@@ -433,7 +347,56 @@ imgset.addEventListener('touchstart', saveFoneImg)
 imgset.addEventListener("touchmove", drag);
 imgset.addEventListener("touchend", pushimg);
 
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
+
+var clickappend = 0
+var clickrow = 0
+$('.defaultImg').click(function (e) {
+    let movingImage = e.target
+    const image_qq = new fabric.Image(movingImage, {
+        width: movingImage.naturalWidth,
+        height: movingImage.naturalHeight,
+        scaleX: movingImage.width / movingImage.naturalWidth,
+        scaleY: movingImage.height / movingImage.naturalHeight,
+        top: 40 * sRout + 120 * clickappend * sRout,
+        left: 30 * sRout + clickrow * 135 * sRout,
+        lockScalingFlip: true
+    })
+    image_qq.alt = 1
+    image_qq.set({
+        borderColor: '#01B0F1'
+    })
+    clickappend++
+    if (clickappend == 5) {
+        clickrow++
+        clickappend = 0
+    }
+    if (clickrow == 10) {
+        clickrow = 0
+    }
+    image_q.push(image_qq)
+
+    canvas.add(image_qq)
+    movingImage = ""
+    setTimeout(function ww() {
+        var items = canvas.getObjects()
+        var Array_sum
+        var ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+        for (i = 0; i < items.length; i++) {
+            ArrTest[i] = parseInt(items[i]._element.alt)
+
+        }
+        Array_sum = SumData(ArrTest)
+        $(".count").val(Array_sum)
+        countRemove()
+
+    }, 500)
+
+})
 
 
 // 設定 外觀
@@ -446,29 +409,63 @@ fabric.Canvas.prototype.customiseControls({
         }
     },
     tr: {
-        action: function () {
-            // var activeObject = canvas.getActiveObject()
-            // if (activeObject) {
-            //         canvas.remove(activeObject);
-            // }
-            function getSelection() {
-                var ji = canvas.getActiveObject()
-                canvas.remove(ji)
-                return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
+        action: function (e) {
+
+
+
+
+            var ji = canvas.getActiveObject()
+            console.log(ji)
+            console.log(objseleted)
+            if (ji.cacheKey == objseleted) {
+                if (ji) {
+                    // var index = changeArray.indexOf(ji);
+                    // if (index > -1) {
+                    //     console.log(index)
+
+                    //     changeArray.splice(index, 1);
+                    //     var stage = new Array()
+                    //     for (i = 0; i < changeArray.length; i++) {
+                    //         stage.push(parseInt(changeArray[i]._element.alt))
+                    //     }
+
+                    //     change_Array_sum = SumData(stage)
+
+                    // }
+                    canvas.remove(ji)
+                }
+            }
+            if (ji._objects) {
+                function getSelection() {
+
+                    return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
+                }
+
+                var o = getSelection();
+
+                o._objects.forEach(function (object, key) {
+                    // var index = changeArray.indexOf(object);
+                    // if (index > -1) {
+                    //     console.log(index)
+
+                    //     changeArray.splice(index, 1);
+                    //     var stage = new Array()
+                    //     for (i = 0; i < changeArray.length; i++) {
+                    //         stage.push(parseInt(changeArray[i]._element.alt))
+                    //     }
+
+                    //     change_Array_sum = SumData(stage)
+
+                    // }
+                    canvas.remove(object);
+                });
+                canvas.discardActiveObject()
+
             }
 
 
-            var o = getSelection();
-
-            o._objects.forEach(function (object, key) {
-                canvas.remove(object);
-            });
-            canvas.discardActiveObject()
-
 
             canvas.renderAll();
-
-
 
             setTimeout(function ww() {
                 var items = canvas.getObjects()
@@ -477,29 +474,41 @@ fabric.Canvas.prototype.customiseControls({
 
                 for (i = 0; i < items.length; i++) {
                     ArrTest[i] = parseInt(items[i]._element.alt)
-                    console.log(items[i]._element.alt)
 
                 }
-                console.log(SumData(ArrTest))
                 Array_sum = SumData(ArrTest)
                 $(".count").val(Array_sum)
-                countRemove()
             }, 500)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         },
         cursor: 'pointer'
     },
     bl: {
-        action: "rotate",
+        action: 'rotate',
+        cursor: 'pointer'
 
     },
     br: {
         action: "scale",
-        // function () {
-        //     canvas.on('mouse:down', e => {
-        //         console.log(e)
-        //     })
-        // },
         cursor: 'pointer'
     },
     mb: {
@@ -546,13 +555,50 @@ fabric.Object.prototype.setControlsVisibility({
 })
 
 fabric.Canvas.prototype.cursorMap[1] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[2] = 'pointer'
 fabric.Canvas.prototype.cursorMap[3] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[4] = 'pointer'
 fabric.Canvas.prototype.cursorMap[5] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[6] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[7] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[8] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[9] = 'pointer'
-// fabric.Canvas.prototype.cursorMap[1] = 'pointer'
+
+
+var objseleted
+var kok = false
+canvas.on('selection:updated', function (e) {
+
+
+    setTimeout(function () {
+        objseleted = e.target.cacheKey
+        console.log(objseleted)
+    }, 120)
+
+});
+
+
+
+
+
+
+
+
+canvas.on('object:selected', e => {
+
+
+    if (e.target) {
+
+        console.log(e)
+        e.target.bringToFront()
+        setTimeout(function () {
+            objseleted = e.target.cacheKey
+            console.log(objseleted)
+        }, 120)
+    }
+
+
+    // canvas.moveTo(e.target, 0);
+})
+
+
+canvas.on('selection:cleared', e => {
+    objseleted = 0
+})
+
+
 
