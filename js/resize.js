@@ -56,7 +56,7 @@ function convertSizeALL(className) {
     $('.tri_btn').css({ width: Math.round(19 * sRatio), height: Math.round(16 * sRatio) });
     $('.choose_area').css({ width: Math.round(127 * sRatio), height: Math.round(453 * sRatio) });
     $('.number').css({ width: Math.round(106 * sRatio), height: Math.round(43 * sRatio), fontSize: Math.round(35 * sRatio), paddingLeft: Math.round(11 * sRatio) });
-    $('.enter_input').css({ width: Math.round(70 * sRatio), height: Math.round(30 * sRatio), fontSize: Math.round(36 * sRatio) })
+    $('.enter_input').css({ width: Math.round(70 * sRatio), height: Math.round(60 * sRatio), fontSize: Math.round(36 * sRatio) })
     $('.display_btn').css({ width: Math.round(158 * sRatio), height: Math.round(52 * sRatio) });
     sRout = sRatio
     canvas.setHeight(665 * sRatio);

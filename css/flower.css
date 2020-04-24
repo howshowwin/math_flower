@@ -461,7 +461,8 @@ body {
 .enter_red {
     font-family: "微軟正黑體";
     position: absolute;
-    top: 87.4%;
+    top: 86%;
+
     left: 19.5%;
     font-weight: 700;
     background: none;
@@ -473,7 +474,7 @@ body {
 .enter_blue {
     font-family: "微軟正黑體";
     position: absolute;
-    top: 87.4%;
+    top: 86%;
     left: 34.9%;
     background: none;
     font-weight: 700;
@@ -485,7 +486,8 @@ body {
 .enter_yellow {
     font-family: "微軟正黑體";
     position: absolute;
-    top: 87.4%;
+    top: 86%;
+
     left: 50%;
     background: none;
     font-weight: 700;
@@ -497,7 +499,8 @@ body {
 .enter_green {
     font-family: "微軟正黑體";
     position: absolute;
-    top: 87.4%;
+    top: 86%;
+
     left: 65.7%;
     background: none;
     font-weight: 700;
