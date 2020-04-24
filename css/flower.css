@@ -287,7 +287,6 @@ body {
 
 /* 回上一頁 */
 .count{
-    line-height: 0;
 }
 .backpage {
     background: url(../img/btH.png);

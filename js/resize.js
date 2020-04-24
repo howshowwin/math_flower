@@ -28,7 +28,7 @@ function countRemove() {
     } else {
         $('.count').css({ width: Math.round(200 * sRatio), height: Math.round(200 * sRatio), fontSize: Math.round(200 * sRatio), left: "85%" });
     }
-
+    $('.count').css({lineHeight: 0})
 }
 var obj_padding
 var cursor_padding
