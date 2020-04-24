@@ -137,8 +137,10 @@ function convertSizeALL(className) {
 
 }
 
-
-$(".count").bind('input porpertychange', function () {
+$(".count").click(function(){
+    $(".count").val('')
+})
+$(".count").bind('input porpertychange', function () {    
     if ($('.count').val() > 50) {
         $('.count').val(50)
     }
