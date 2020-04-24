@@ -218,7 +218,6 @@ canvas.on('object:moved', function (e) {
         var obkkk = obj._objects ? obj._objects : e.target
         obj.setCoords();
     
-        // if ((obj.getBoundingRect().left + obj.getBoundingRect().width/2) > obj.canvas.width * 0.80 && obj.getBoundingRect().top + obj.getBoundingRect().height < obj.canvas.height * 0.65) {
     
         if (obkkk == e.target) {
             canvas.remove(obkkk)
@@ -232,20 +231,7 @@ canvas.on('object:moved', function (e) {
     
         }
     
-        // function getSelection() {
-            
-        //     return canvas.getActiveObject() == null ? canvas.getActiveGroup() : canvas.getActiveObject()
-        // }
-    
-        // var ko = new Array()
-        // var o = getSelection();
-        
-        // o._objects.forEach(function (object, key) {
-        //     canvas.remove(object);
-        // });
-        // canvas.discardActiveObject()
-    
-    
+
         canvas.renderAll();
         
         setTimeout(function ww() {
