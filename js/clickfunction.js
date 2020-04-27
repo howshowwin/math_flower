@@ -354,6 +354,28 @@ var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
 var clickappend = 0
 var clickrow = 0
+
+
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+$('.enter_input').blur(function () {
+
+    if (isAndroid || isiOS) {
+        clicknum()
+    }
+})
+
+$('.count').blur(function () {
+
+    if (isAndroid || isiOS) {
+        setTimeout(function(){
+            idontknowwhatiwrite()
+
+        },200)
+    }
+})
 $('.defaultImg').click(function (e) {
     let movingImage = e.target
     const image_qq = new fabric.Image(movingImage, {
