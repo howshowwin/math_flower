@@ -50,6 +50,11 @@ $('.cursor').click(function () {
         mtr: false // 旋轉控制鍵
     })
 })
+
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
 canvas.on('mouse:down', e => {
     // console.log(e)
 
@@ -66,8 +71,8 @@ canvas.on('mouse:down', e => {
             const image = new fabric.Image(imgQ, {
                 width: active.naturalWidth,
                 height: active.naturalHeight,
-                scaleX: active.scaleX,
-                scaleY: active.scaleY,
+                scaleX: isiOS ? active.scaleX*sRout : active.scaleX,
+                scaleY: isiOS ? active.scaleY*sRout : active.scaleY,
                 angle: active.angle,
                 top: active.top,
                 left: active.left
