@@ -74,6 +74,7 @@ canvas.on('mouse:down', e => {
                 return a
             }
         }
+        console.log(active.scaleX,active.scaleY)
         imgQ.onload = (e) => {
             const image = new fabric.Image(imgQ, {
                 width: active.naturalWidth,
