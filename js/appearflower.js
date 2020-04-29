@@ -248,19 +248,19 @@ function idontknowwhatiwrite() {
                     })
 
                 }
-               
+
 
 
             }
         }
 
 
-  
+
 
 
     }
 
-   
+
 
 
 
@@ -268,13 +268,25 @@ function idontknowwhatiwrite() {
 
 
 }
-
+var settimeclick = 1
 $('.enter').click(function () {
 
+    if (settimeclick == 1) {
+        idontknowwhatiwrite()
+        settimeclick = 0
+        $('.enter').css({
+            pointerEvents: "none"
+        })
+    }
+    setTimeout(function () {
+        $('.enter').css({
+            pointerEvents: "all"
+        })
 
+    }, 1700)
+    settimeclick = 1
 
-    idontknowwhatiwrite()
     // redlittlemove += 10
- 
+
 
 })

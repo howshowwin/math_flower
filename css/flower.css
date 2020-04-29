@@ -400,6 +400,7 @@ body {
     transform-origin: 50% 100%;
     transform: scale(0);
     transition: 0.2s;
+   
 }
 
 .redchoose {
