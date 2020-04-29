@@ -67,12 +67,19 @@ canvas.on('mouse:down', e => {
         const imgQ = document.createElement('img')
         imgQ.src = `img/${PickColor}`
         imgQ.alt = '1'
+        function thisscale(a){
+            if(a==1&& isiOS){
+                return a*sRout
+            }else{
+                return a
+            }
+        }
         imgQ.onload = (e) => {
             const image = new fabric.Image(imgQ, {
                 width: active.naturalWidth,
                 height: active.naturalHeight,
-                scaleX: isiOS ? active.scaleX*sRout : active.scaleX,
-                scaleY: isiOS ? active.scaleY*sRout : active.scaleY,
+                scaleX: thisscale(active.scaleX) ,
+                scaleY: thisscale(active.scaleY) ,
                 angle: active.angle,
                 top: active.top,
                 left: active.left
