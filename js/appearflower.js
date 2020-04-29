@@ -283,7 +283,7 @@ $('.enter').click(function () {
             pointerEvents: "all"
         })
 
-    }, 1700)
+    }, 3000)
     settimeclick = 1
 
     // redlittlemove += 10
