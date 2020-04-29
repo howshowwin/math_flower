@@ -80,7 +80,7 @@ canvas.on('mouse:down', e => {
             })
 
 
-            // canvas.remove(active)
+            canvas.remove(active)
 
             canvas.discardActiveObject().renderAll()
             // canvas.add(image)
