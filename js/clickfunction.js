@@ -1,7 +1,7 @@
-var red
-var blue
-var yellow
-var green
+var red =0
+var blue =0
+var yellow =0
+var green =0
 var display_count = 0
 $('.display_btn').click(function () {
     if (display_count == 0) {
@@ -22,43 +22,87 @@ $('.display_btn').click(function () {
     }
 })
 
-$('.redbtn').click(function () {
-
-    $('.redchoose').css({
-        transform: "scale(1)"
+$('.redbtn').click(function (e) {
+    e.stopPropagation();
+    $('.choose_area').not('.redchoose').css({
+        transform: "scale(0)"
     })
+    if(red==0){
+        $('.redchoose').css({
+            transform: "scale(1)"
+        })
+    
+        setTimeout(function () {
+            red = 1
+        }, 100)
+    }else if(red==1){
+        $('.redchoose').css({
+            transform: "scale(0)"
+        })
+        red=0
+    }
 
-    setTimeout(function () {
-        red = 1
-    }, 100)
 })
-$('.bluebtn').click(function () {
-
-    $('.bluechoose').css({
-        transform: "scale(1)"
+$('.bluebtn').click(function (e) {
+    e.stopPropagation();
+    $('.choose_area').not('.bluechoose').css({
+        transform: "scale(0)"
     })
-    setTimeout(function () {
-        blue = 1
-    }, 100)
+    if(blue==0){
+        $('.bluechoose').css({
+            transform: "scale(1)"
+        })
+        setTimeout(function () {
+            blue = 1
+        }, 100)
+    }else if(blue == 1){
+        $('.bluechoose').css({
+            transform: "scale(0)"
+        })
+        blue = 0
+    }
+  
 
 })
-$('.yellowbtn').click(function () {
-
-    $('.yellowchoose').css({
-        transform: "scale(1)"
+$('.yellowbtn').click(function (e) {
+    e.stopPropagation();
+    $('.choose_area').not('.yellowchoose').css({
+        transform: "scale(0)"
     })
-    setTimeout(function () {
-        yellow = 1
-    }, 100)
+    if(yellow==0){
+        $('.yellowchoose').css({
+            transform: "scale(1)"
+        })
+        setTimeout(function () {
+            yellow = 1
+        }, 100)
+    }else if(yellow==1){
+        $('.yellowchoose').css({
+            transform: "scale(0)"
+        })
+        yellow = 0
+    }
+
 })
-$('.greenbtn').click(function () {
-
-    $('.greenchoose').css({
-        transform: "scale(1)"
+$('.greenbtn').click(function (e) {
+    e.stopPropagation();
+    $('.choose_area').not('.greenchoose').css({
+        transform: "scale(0)"
     })
-    setTimeout(function () {
-        green = 1
-    }, 100)
+    if(green==0){
+        $('.greenchoose').css({
+            transform: "scale(1)"
+        })
+        setTimeout(function () {
+            green = 1
+        }, 100)
+    }else if( green == 1){
+        $('.greenchoose').css({
+            transform: "scale(0)"
+        })
+        green = 0
+    }
+
 })
 
 
@@ -354,7 +398,7 @@ var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
 var clickappend = 0
 var clickrow = 0
-
+var clicklittlemove = 0
 
 var u = navigator.userAgent;
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
@@ -370,10 +414,10 @@ $('.enter_input').blur(function () {
 $('.count').blur(function () {
 
     if (isAndroid || isiOS) {
-        setTimeout(function(){
+        setTimeout(function () {
             idontknowwhatiwrite()
 
-        },200)
+        }, 200)
     }
 })
 $('.defaultImg').click(function (e) {
@@ -384,7 +428,7 @@ $('.defaultImg').click(function (e) {
         scaleX: movingImage.width / movingImage.naturalWidth,
         scaleY: movingImage.height / movingImage.naturalHeight,
         top: 40 * sRout + 120 * clickappend * sRout,
-        left: 30 * sRout + clickrow * 135 * sRout,
+        left: 30 * sRout + clickrow * 135 * sRout + clicklittlemove * sRout,
         lockScalingFlip: true
     })
     image_qq.alt = 1
@@ -398,6 +442,10 @@ $('.defaultImg').click(function (e) {
     }
     if (clickrow == 10) {
         clickrow = 0
+        clicklittlemove += 10
+    }
+    if (clicklittlemove > 10) {
+        clicklittlemove = 0
     }
     image_q.push(image_qq)
 
