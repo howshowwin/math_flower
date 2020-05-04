@@ -313,7 +313,19 @@ body {
     background-size: cover;
 
 }
+.question{
+    background: url(../img/btQ.png);
+    background-size: cover;
+    position: absolute;
+    top: 87%;
+    left: 87.1%;
+    cursor: pointer;
+}
+.question:hover {
+    background: url(../img/btQ1.png);
+    background-size: cover;
 
+}
 /* 數量兩字 */
 
 .numberText {

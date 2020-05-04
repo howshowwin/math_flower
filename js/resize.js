@@ -51,6 +51,8 @@ function convertSizeALL(className) {
     $('.cursor').css({ width: Math.round(116 * sRatio), height: Math.round(122 * sRatio) });
     $('.backpage').css({ width: Math.round(116 * sRatio), height: Math.round(122 * sRatio) });
     $('.close').css({ width: Math.round(116 * sRatio), height: Math.round(122 * sRatio) });
+    $('.question').css({ width: Math.round(116 * sRatio), height: Math.round(122 * sRatio) });
+
     $('.numberText').css({ width: Math.round(130 * sRatio), height: Math.round(59 * sRatio), fontSize: Math.round(59 * sRatio) })
     $('.img_flower').css({ width: Math.round(113 * sRatio), height: Math.round(113 * sRatio) });
     $('.tri_btn').css({ width: Math.round(19 * sRatio), height: Math.round(16 * sRatio) });

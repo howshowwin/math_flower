@@ -1,7 +1,7 @@
-var red =0
-var blue =0
-var yellow =0
-var green =0
+var red = 0
+var blue = 0
+var yellow = 0
+var green = 0
 var display_count = 0
 $('.display_btn').click(function () {
     if (display_count == 0) {
@@ -10,6 +10,18 @@ $('.display_btn').click(function () {
             background: "url(img/btN2.png)",
             backgroundSize: "cover"
         })
+        let items = canvas.getObjects()
+        let Array_sum
+        let ArrTest = new Array();　// 宣告一個新的陣列為 ArrTest
+
+        for (i = 0; i < items.length; i++) {
+            ArrTest[i] = parseInt(items[i]._element.alt)
+
+        }
+        Array_sum = SumData(ArrTest)
+        $(".count").val(Array_sum)
+        countRemove()
+
         display_count = 1
     } else if (display_count == 1) {
         $('.count').addClass('display_none')
@@ -27,19 +39,19 @@ $('.redbtn').click(function (e) {
     $('.choose_area').not('.redchoose').css({
         transform: "scale(0)"
     })
-    if(red==0){
+    if (red == 0) {
         $('.redchoose').css({
             transform: "scale(1)"
         })
-    
+
         setTimeout(function () {
             red = 1
         }, 100)
-    }else if(red==1){
+    } else if (red == 1) {
         $('.redchoose').css({
             transform: "scale(0)"
         })
-        red=0
+        red = 0
     }
 
 })
@@ -48,20 +60,20 @@ $('.bluebtn').click(function (e) {
     $('.choose_area').not('.bluechoose').css({
         transform: "scale(0)"
     })
-    if(blue==0){
+    if (blue == 0) {
         $('.bluechoose').css({
             transform: "scale(1)"
         })
         setTimeout(function () {
             blue = 1
         }, 100)
-    }else if(blue == 1){
+    } else if (blue == 1) {
         $('.bluechoose').css({
             transform: "scale(0)"
         })
         blue = 0
     }
-  
+
 
 })
 $('.yellowbtn').click(function (e) {
@@ -69,14 +81,14 @@ $('.yellowbtn').click(function (e) {
     $('.choose_area').not('.yellowchoose').css({
         transform: "scale(0)"
     })
-    if(yellow==0){
+    if (yellow == 0) {
         $('.yellowchoose').css({
             transform: "scale(1)"
         })
         setTimeout(function () {
             yellow = 1
         }, 100)
-    }else if(yellow==1){
+    } else if (yellow == 1) {
         $('.yellowchoose').css({
             transform: "scale(0)"
         })
@@ -89,14 +101,14 @@ $('.greenbtn').click(function (e) {
     $('.choose_area').not('.greenchoose').css({
         transform: "scale(0)"
     })
-    if(green==0){
+    if (green == 0) {
         $('.greenchoose').css({
             transform: "scale(1)"
         })
         setTimeout(function () {
             green = 1
         }, 100)
-    }else if( green == 1){
+    } else if (green == 1) {
         $('.greenchoose').css({
             transform: "scale(0)"
         })
