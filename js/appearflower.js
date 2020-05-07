@@ -211,37 +211,35 @@ function idontknowwhatiwrite() {
 
                 if (arr_one.length <= 5) {
 
-                    s_1 += 40
+                    s_1_1 += 100
 
 
                     image.animate('top', 30 * sRout + 120 * sRout * numnum, {
-                        duration: 800 + s_1,
+                        duration:  s_1_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    console.log(qq + "ewqeqe")
                     image.animate('left', (45 * sRout) + (maxWidthRed * qq) / 2 + (redlittlemove * sRout), {
-                        duration: 800 + s_1,
+                        duration: 100+s_1_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
                 } else if (arr_one.length > 5 && arr_one.length <= 10) {
-                    s_1 += 40
+                    s_1 += 100
 
 
 
                     image.animate('top', 30 * sRout + 120 * sRout * (numnum - 5), {
-                        duration: 800 + s_1,
+                        duration:  + s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
                     })
-                    console.log(redcount2 + 'ejiejeje')
 
                     image.animate('left', (45 * sRout) + (maxWidthRed * redcount2) / 2 + (redlittlemove * sRout), {
-                        duration: 800 + s_1,
+                        duration:  100+ s_1,
                         onChange: canvas.renderAll.bind(canvas),
 
                         easing: fabric.util.ease.easeInOutExpo
