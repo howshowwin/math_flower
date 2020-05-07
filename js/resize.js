@@ -60,6 +60,14 @@ function convertSizeALL(className) {
     $('.number').css({ width: Math.round(106 * sRatio), height: Math.round(43 * sRatio), fontSize: Math.round(35 * sRatio), paddingLeft: Math.round(11 * sRatio) });
     $('.enter_input').css({ width: Math.round(70 * sRatio), height: Math.round(60 * sRatio), fontSize: Math.round(36 * sRatio) })
     $('.display_btn').css({ width: Math.round(158 * sRatio), height: Math.round(52 * sRatio) });
+    
+    $('.mask').css({ width: Math.round(w * sRatio), height: Math.round(h * sRatio) });
+    $('.info').css({ width: Math.round(673*1.6  * sRatio), height: Math.round(456 *1.6* sRatio) });
+    $('.info-page').css({ width: Math.round(1039  * sRatio), height: Math.round(687.6* sRatio),borderRadius: Math.round(15 * sRatio) });
+    $('.info-btn-left,.info-btn-right').css({ width: Math.round(35 * sRatio), height: Math.round(35 * sRatio) });
+
+    $('.btn_close_inset').css({ width: Math.round(53 * sRatio), height: Math.round(53 * sRatio) });
+    
     sRout = sRatio
     canvas.setHeight(665 * sRatio);
     canvas.setWidth(1415 * sRatio);

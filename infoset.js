@@ -1,0 +1,1 @@
+var set_pic_info =["G1.svg","G2.svg"]

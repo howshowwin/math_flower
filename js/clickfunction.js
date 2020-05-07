@@ -1,3 +1,7 @@
+$('.info-page').css({
+    background: `url(setpic/${set_pic_info[0]})`,
+    backgroundSize: "cover"
+  })
 var red = 0
 var blue = 0
 var yellow = 0
@@ -892,5 +896,46 @@ canvas.on('selection:cleared', e => {
     objseleted = 0
 })
 
+if (set_pic_info.length > 1) {
+    $('.info-btn-right').removeClass('display_none')
+}
+var picnowdisplay = 0
+var picenddisplay = set_pic_info.length -1
+$('.info-btn-right').click(function () {
+    picnowdisplay++
+    $('.info-page').css({
+        background: `url(setpic/${set_pic_info[picnowdisplay]})`,
+        backgroundSize: "cover"
+    })
+    if(picnowdisplay==picenddisplay){
+        $('.info-btn-right').addClass('display_none')
+    }
+    if(picnowdisplay!=0){
+        $('.info-btn-left').removeClass('display_none')
+    }
+})
+$('.info-btn-left').click(function () {
+    picnowdisplay--
+    $('.info-page').css({
+        background: `url(setpic/${set_pic_info[picnowdisplay]})`,
+        backgroundSize: "cover"
+    })
+    if(picnowdisplay==0){
+        $('.info-btn-left').addClass('display_none')
+    }
+    if(picnowdisplay!=picenddisplay){
+        $('.info-btn-right').removeClass('display_none')
+    }
+
+})
+
+$('.question').click(function () {
+    picnowdisplay = 0
+    $('.mask').removeClass("display_none")
 
 
+})
+$('.btn_close_inset').click(function () {
+    $('.mask').addClass("display_none")
+
+})
